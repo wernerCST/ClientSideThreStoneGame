@@ -1,9 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package com.mycompany.clientside.connection;
+package com.hly.stones;
 
 import javafx.application.Application;
 import static javafx.application.Application.launch;
@@ -11,10 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-/**
- *
- * @author 1511430
- */
+
 
 public class MainApp extends Application {
 
@@ -28,9 +20,6 @@ public class MainApp extends Application {
         stage.setTitle("JavaFX and Maven");
         stage.setScene(scene);
         stage.show();
-        
-        Connection con = new Connection();
-        con.connectToServer();
     }
 
     /**
@@ -46,4 +35,5 @@ public class MainApp extends Application {
         
         //display() of gameBoardController
     }
+
 }
