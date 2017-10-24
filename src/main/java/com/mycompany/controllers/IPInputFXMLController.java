@@ -2,15 +2,24 @@
  * Sample Skeleton for 'IPInputFXML.fxml' Controller Class
  */
 
-package com.hly.controllers;
+package com.mycompany.controllers;
 
+import com.mycompany.stones.MainApp;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 public class IPInputFXMLController {
 
@@ -43,8 +52,26 @@ public class IPInputFXMLController {
     
     @FXML
     void handleInput(ActionEvent event) {
-
+        //should check if IP is valid or not
+        if(Integer.parseInt(IPTextField.getText()) > 0){
+            try {
+                Stage stage = new Stage();
+                FXMLLoader loader = new FXMLLoader();
+                
+                loader.setLocation(MainApp.class.getResource("/fxml/MenuFXML.fxml"));
+                
+                Parent parent = (AnchorPane) loader.load();
+                Scene scene = new Scene(parent);
+                stage.setScene(scene);
+                
+                stage.show();
+                
+                Stage close = (Stage) inputBtn.getScene().getWindow();
+                close.close();
+                
+            } catch (IOException ex) {
+                Logger.getLogger(IPInputFXMLController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }
-    
-    //if valid IP, call display() menu
 }

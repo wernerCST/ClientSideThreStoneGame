@@ -69,7 +69,7 @@
     </dependency>
   </dependencies>
   <properties>
-    <mainClass>com.mycompany.clientside.connection.MainApp</mainClass>
+    <mainClass>com.mycompany.stones.MainApp</mainClass>
     <maven.compiler.source>1.8</maven.compiler.source>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.target>1.8</maven.compiler.target>
