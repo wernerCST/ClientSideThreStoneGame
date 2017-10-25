@@ -1,6 +1,4 @@
-/**
- * Sample Skeleton for 'GameBoardFXML.fxml' Controller Class
- */
+package com.mycompany.controllers;
 
 import com.mycompany.controllers.IPInputFXMLController;
 import com.mycompany.stones.MainApp;
@@ -15,10 +13,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class GameBoardController{
@@ -369,4 +370,25 @@ public class GameBoardController{
     
     //Need to update at each round the scores, number of pebbles
     //Need to check whose turn it is (white or black) to be able to put right color in imageview
+    
+    @FXML
+    void handleClick(ActionEvent event){
+        Alert dialog = new Alert(Alert.AlertType.ERROR);
+        dialog.initModality(Modality.NONE);
+        dialog.setTitle("Test");
+        dialog.setHeaderText("There was an error connecting to the server.");
+        dialog.setContentText("The ip provided is not valid.");
+        dialog.show();
+        
+        //Image image = new Image("/images.png");
+        
+        iv68.setImage(new Image("file:/images/black.png"));
+        btn55.setVisible(false);
+        
+        // Image image = new Image(getClass().getResourceAsStream("src/main/resources/images/black.png"));
+        // btn55.setGraphic(new ImageView(image));
+        // simple displays ImageView the image as is
+        //ImageView iv1 = new ImageView();
+        //iv1.setImage(image);
+    }
 }
