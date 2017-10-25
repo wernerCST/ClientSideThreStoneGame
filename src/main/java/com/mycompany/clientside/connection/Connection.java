@@ -28,7 +28,7 @@ public class Connection {
         server = "10.172.15.30";
         BUFSIZE = 32;         
     }
-    public byte[] connectToServer(String ip, int userMsg) {
+    public byte[] connectToServer(String ip, int[] userMsg) {
         System.out.println("1.2");
         int msgSize;
         byte[] serverMsg = new byte[BUFSIZE];
@@ -39,7 +39,10 @@ public class Connection {
             OutputStream out = sk.getOutputStream();
             System.out.println("1.4");
             byte[] msg = new byte[32];
-            msg[0] =  (byte) userMsg;
+            for (int i = 0; i < userMsg.length; i++) {
+                msg[i] = (byte)userMsg[i];
+                System.out.println(i + ": " +  msg[i]);
+            }
             out.write(msg);
             System.out.println("1.5");
             int i = 0;

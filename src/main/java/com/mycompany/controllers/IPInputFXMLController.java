@@ -47,7 +47,6 @@ public class IPInputFXMLController {
     private Connection con;
     public IPInputFXMLController(){
         super();
-        if(con == null){System.out.println("4 fuck");}
     }
     @FXML // This method is called by the FXMLLoader when initialization is complete
     void initialize() {
@@ -63,8 +62,11 @@ public class IPInputFXMLController {
         String ip = IPTextField.getText();
         System.out.println("1.1");
         System.out.println(ip);
-        if(con == null){System.out.println("2 fuck");}
-        byte[] response = con.connectToServer(ip, 0);
+        int[] msg = new int[3];
+        msg[0] = 0;
+        msg[1] = 4;
+        msg[2] = 2;
+        byte[] response = con.connectToServer(ip, msg);
         
         if(response[0] == 1){                
             try {
@@ -100,6 +102,5 @@ public class IPInputFXMLController {
 
     public void setConnectionObject(Connection con) {
         this.con = con;
-        if(con == null){System.out.println("0 fuck");}
     }
 }
