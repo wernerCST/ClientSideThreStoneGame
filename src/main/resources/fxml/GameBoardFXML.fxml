@@ -4,7 +4,6 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
@@ -12,187 +11,183 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.controllers.GameBoardController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.controllers.GameBoardController">
    <center>
-      <GridPane BorderPane.alignment="CENTER">
+      <GridPane hgap="4.0" vgap="4.0" BorderPane.alignment="CENTER">
         <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="30.0" />
         </columnConstraints>
         <rowConstraints>
-            <RowConstraints minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="50.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="50.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="50.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="50.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="50.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="50.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="50.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="50.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="30.0" prefHeight="50.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="30.0" prefHeight="50.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="30.0" prefHeight="50.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
             <Button fx:id="btn42" mnemonicParsing="false" prefHeight="25.0" prefWidth="30.0" GridPane.columnIndex="4" GridPane.rowIndex="2">
                <graphic>
-                  <ImageView fx:id="iv42" fitHeight="18.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/black.png" />
-                     </image>
-                  </ImageView>
+                  <ImageView fx:id="iv42" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
                </graphic></Button>
             <Button fx:id="btn52" mnemonicParsing="false" prefHeight="25.0" prefWidth="30.0" GridPane.columnIndex="5" GridPane.rowIndex="2">
                <graphic>
-                  <ImageView fx:id="iv52" fitHeight="18.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="iv52" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
                </graphic></Button>
             <Button fx:id="btn62" mnemonicParsing="false" prefHeight="25.0" prefWidth="30.0" GridPane.columnIndex="6" GridPane.rowIndex="2">
                <graphic>
-                  <ImageView fx:id="iv62" fitHeight="18.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="iv62" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
                </graphic></Button>
             <Button fx:id="btn33" mnemonicParsing="false" prefHeight="25.0" prefWidth="30.0" GridPane.columnIndex="3" GridPane.rowIndex="3">
                <graphic>
-                  <ImageView fx:id="iv33" fitHeight="18.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="iv33" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
                </graphic></Button>
             <Button fx:id="btn43" mnemonicParsing="false" prefHeight="25.0" prefWidth="30.0" GridPane.columnIndex="4" GridPane.rowIndex="3">
                <graphic>
-                  <ImageView fx:id="iv43" fitHeight="18.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="iv43" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
                </graphic></Button>
             <Button fx:id="btn53" mnemonicParsing="false" prefHeight="25.0" prefWidth="30.0" GridPane.columnIndex="5" GridPane.rowIndex="3">
                <graphic>
-                  <ImageView fx:id="iv53" fitHeight="18.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="iv53" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
                </graphic></Button>
             <Button fx:id="btn63" mnemonicParsing="false" prefHeight="25.0" prefWidth="30.0" GridPane.columnIndex="6" GridPane.rowIndex="3">
                <graphic>
-                  <ImageView fx:id="iv63" fitHeight="18.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="iv63" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
                </graphic></Button>
             <Button fx:id="btn73" mnemonicParsing="false" prefHeight="25.0" prefWidth="30.0" GridPane.columnIndex="7" GridPane.rowIndex="3">
                <graphic>
-                  <ImageView fx:id="iv73" fitHeight="18.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="iv73" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
                </graphic></Button>
             <Button fx:id="btn24" mnemonicParsing="false" prefHeight="25.0" prefWidth="30.0" GridPane.columnIndex="2" GridPane.rowIndex="4">
                <graphic>
-                  <ImageView fx:id="iv24" fitHeight="18.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="iv24" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
                </graphic></Button>
             <Button fx:id="btn34" mnemonicParsing="false" prefHeight="25.0" prefWidth="30.0" GridPane.columnIndex="3" GridPane.rowIndex="4">
                <graphic>
-                  <ImageView fx:id="iv34" fitHeight="18.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="iv34" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
                </graphic></Button>
             <Button fx:id="btn44" mnemonicParsing="false" prefHeight="25.0" prefWidth="30.0" GridPane.columnIndex="4" GridPane.rowIndex="4">
                <graphic>
-                  <ImageView fx:id="iv44" fitHeight="18.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="iv44" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
                </graphic></Button>
             <Button fx:id="btn54" mnemonicParsing="false" prefHeight="25.0" prefWidth="30.0" GridPane.columnIndex="5" GridPane.rowIndex="4">
                <graphic>
-                  <ImageView fx:id="iv54" fitHeight="18.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="iv54" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
                </graphic></Button>
             <Button fx:id="btn64" mnemonicParsing="false" prefHeight="25.0" prefWidth="30.0" GridPane.columnIndex="6" GridPane.rowIndex="4">
                <graphic>
-                  <ImageView fx:id="iv64" fitHeight="18.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="iv64" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
                </graphic></Button>
             <Button fx:id="btn74" mnemonicParsing="false" prefHeight="25.0" prefWidth="30.0" GridPane.columnIndex="7" GridPane.rowIndex="4">
                <graphic>
-                  <ImageView fx:id="iv74" fitHeight="18.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="iv74" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
                </graphic></Button>
             <Button fx:id="btn84" mnemonicParsing="false" prefHeight="25.0" prefWidth="30.0" GridPane.columnIndex="8" GridPane.rowIndex="4">
                <graphic>
-                  <ImageView fx:id="iv84" fitHeight="18.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="iv84" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
                </graphic></Button>
             <Button fx:id="btn25" mnemonicParsing="false" prefHeight="25.0" prefWidth="30.0" GridPane.columnIndex="2" GridPane.rowIndex="5">
                <graphic>
-                  <ImageView fx:id="iv25" fitHeight="18.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="iv25" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
                </graphic></Button>
             <Button fx:id="btn35" mnemonicParsing="false" prefHeight="25.0" prefWidth="30.0" GridPane.columnIndex="3" GridPane.rowIndex="5">
                <graphic>
-                  <ImageView fx:id="iv35" fitHeight="18.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="iv35" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
                </graphic></Button>
             <Button fx:id="btn45" maxHeight="25.0" maxWidth="30.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="30.0" GridPane.columnIndex="4" GridPane.rowIndex="5">
                <graphic>
-                  <ImageView fx:id="iv45" fitHeight="18.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="iv45" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
                </graphic></Button>
             <Button fx:id="btn55" mnemonicParsing="false" onAction="#handleClick" prefHeight="25.0" prefWidth="30.0" GridPane.columnIndex="5" GridPane.rowIndex="5">
                <graphic>
-                  <ImageView fx:id="iv55" fitHeight="18.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="iv55" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
                </graphic></Button>
             <Button fx:id="btn65" mnemonicParsing="false" prefHeight="25.0" prefWidth="30.0" GridPane.columnIndex="6" GridPane.rowIndex="5">
                <graphic>
-                  <ImageView fx:id="iv65" fitHeight="18.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="iv65" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
                </graphic></Button>
             <Button fx:id="btn75" mnemonicParsing="false" prefHeight="25.0" prefWidth="30.0" GridPane.columnIndex="7" GridPane.rowIndex="5">
                <graphic>
-                  <ImageView fx:id="iv75" fitHeight="18.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="iv75" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
                </graphic></Button>
             <Button fx:id="btn85" mnemonicParsing="false" prefHeight="25.0" prefWidth="30.0" GridPane.columnIndex="8" GridPane.rowIndex="5">
                <graphic>
-                  <ImageView fx:id="iv85" fitHeight="18.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="iv85" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
                </graphic></Button>
             <Button fx:id="btn26" mnemonicParsing="false" prefHeight="25.0" prefWidth="30.0" GridPane.columnIndex="2" GridPane.rowIndex="6">
                <graphic>
-                  <ImageView fx:id="iv26" fitHeight="18.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="iv26" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
                </graphic></Button>
             <Button fx:id="btn36" mnemonicParsing="false" prefHeight="25.0" prefWidth="30.0" GridPane.columnIndex="3" GridPane.rowIndex="6">
                <graphic>
-                  <ImageView fx:id="iv36" fitHeight="18.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="iv36" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
                </graphic></Button>
             <Button fx:id="btn46" mnemonicParsing="false" prefHeight="25.0" prefWidth="30.0" GridPane.columnIndex="4" GridPane.rowIndex="6">
                <graphic>
-                  <ImageView fx:id="iv46" fitHeight="18.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="iv46" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
                </graphic></Button>
             <Button fx:id="btn56" mnemonicParsing="false" prefHeight="25.0" prefWidth="30.0" GridPane.columnIndex="5" GridPane.rowIndex="6">
                <graphic>
-                  <ImageView fx:id="iv56" fitHeight="18.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="iv56" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
                </graphic></Button>
             <Button fx:id="btn66" mnemonicParsing="false" prefHeight="25.0" prefWidth="30.0" GridPane.columnIndex="6" GridPane.rowIndex="6">
                <graphic>
-                  <ImageView fx:id="iv66" fitHeight="18.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="iv66" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
                </graphic></Button>
             <Button fx:id="btn76" mnemonicParsing="false" prefHeight="25.0" prefWidth="30.0" GridPane.columnIndex="7" GridPane.rowIndex="6">
                <graphic>
-                  <ImageView fx:id="iv76" fitHeight="18.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="iv76" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
                </graphic></Button>
             <Button fx:id="btn86" mnemonicParsing="false" prefHeight="25.0" prefWidth="30.0" GridPane.columnIndex="8" GridPane.rowIndex="6">
                <graphic>
-                  <ImageView fx:id="iv86" fitHeight="18.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="iv86" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
                </graphic></Button>
             <Button fx:id="btn37" mnemonicParsing="false" prefHeight="25.0" prefWidth="30.0" GridPane.columnIndex="3" GridPane.rowIndex="7">
                <graphic>
-                  <ImageView fx:id="iv37" fitHeight="18.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="iv37" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
                </graphic></Button>
             <Button fx:id="btn47" mnemonicParsing="false" prefHeight="25.0" prefWidth="30.0" GridPane.columnIndex="4" GridPane.rowIndex="7">
                <graphic>
-                  <ImageView fx:id="iv47" fitHeight="18.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="iv47" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
                </graphic></Button>
             <Button fx:id="btn57" mnemonicParsing="false" prefHeight="25.0" prefWidth="30.0" GridPane.columnIndex="5" GridPane.rowIndex="7">
                <graphic>
-                  <ImageView fx:id="iv57" fitHeight="18.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="iv57" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
                </graphic></Button>
             <Button fx:id="btn67" mnemonicParsing="false" prefHeight="25.0" prefWidth="30.0" GridPane.columnIndex="6" GridPane.rowIndex="7">
                <graphic>
-                  <ImageView fx:id="iv67" fitHeight="18.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="iv67" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
                </graphic></Button>
             <Button fx:id="btn77" mnemonicParsing="false" prefHeight="25.0" prefWidth="30.0" GridPane.columnIndex="7" GridPane.rowIndex="7">
                <graphic>
-                  <ImageView fx:id="iv77" fitHeight="18.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="iv77" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
                </graphic></Button>
             <Button fx:id="btn48" mnemonicParsing="false" prefHeight="25.0" prefWidth="30.0" GridPane.columnIndex="4" GridPane.rowIndex="8">
                <graphic>
-                  <ImageView fx:id="iv48" fitHeight="18.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="iv48" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
                </graphic></Button>
             <Button fx:id="btn58" mnemonicParsing="false" prefHeight="25.0" prefWidth="30.0" GridPane.columnIndex="5" GridPane.rowIndex="8">
                <graphic>
-                  <ImageView fx:id="iv58" fitHeight="18.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="iv58" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
                </graphic></Button>
             <Button fx:id="btn68" mnemonicParsing="false" prefHeight="25.0" prefWidth="30.0" GridPane.columnIndex="6" GridPane.rowIndex="8">
                <graphic>
-                  <ImageView fx:id="iv68" fitHeight="18.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="iv68" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
                </graphic></Button>
          </children>
       </GridPane>

@@ -380,19 +380,7 @@ public class GameBoardController{
         dialog.setContentText("The ip provided is not valid.");
         dialog.show();
         
-        //Image image = new Image("/images.png");
-        
-        //iv55.setImage(new Image("file:/images/black.png"));
-        //iv55.setFitHeight(30);
-        //iv55.setFitWidth(30);
-        //btn55.setVisible(false);
-        
-        Image image = new Image(getClass().getResourceAsStream("/images/white.png"));
+        Image image = new Image(getClass().getResourceAsStream("/images/black.png"));
         btn55.setGraphic(new ImageView(image));
-        //btn55.
-        
-        // simple displays ImageView the image as is
-        //ImageView iv1 = new ImageView();
-        //iv1.setImage(image);
     }
 }
