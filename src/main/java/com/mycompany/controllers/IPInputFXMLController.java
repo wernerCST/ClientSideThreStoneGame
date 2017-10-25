@@ -57,16 +57,22 @@ public class IPInputFXMLController {
     }
     
     @FXML
-    void handleInput(ActionEvent event) {
+    void handleInput(ActionEvent event)  {
         //should check if IP is valid or not
         String ip = IPTextField.getText();
+       try{
+           con.setIP(ip);
+       } catch (IOException ex) {
+           errorAlert(ex.getMessage());
+       }
         System.out.println("1.1");
         System.out.println(ip);
         int[] msg = new int[3];
         msg[0] = 0;
         msg[1] = 4;
         msg[2] = 2;
-        byte[] response = con.connectToServer(ip, msg);
+        con.connectToServer(msg);
+        byte[] response = con.serverRead();
         
         if(response[0] == 1){                
             try {
@@ -85,7 +91,7 @@ public class IPInputFXMLController {
                 close.close();
                 
             } catch (IOException ex) {
-                Logger.getLogger(IPInputFXMLController.class.getName()).log(Level.SEVERE, null, ex);
+                errorAlert(ex.getMessage());
             }
         } else {
             errorAlert("Sorry please try again");
