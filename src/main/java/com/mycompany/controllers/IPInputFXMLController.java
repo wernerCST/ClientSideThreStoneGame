@@ -10,15 +10,18 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Pattern;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class IPInputFXMLController {
@@ -53,7 +56,8 @@ public class IPInputFXMLController {
     @FXML
     void handleInput(ActionEvent event) {
         //should check if IP is valid or not
-        if(Integer.parseInt(IPTextField.getText()) > 0){
+        Pattern pattern = Pattern.compile("\\d+\\.\\d+\\.\\d+");
+        if(pattern.matcher(IPTextField.getText()).matches()){
             try {
                 Stage stage = new Stage();
                 FXMLLoader loader = new FXMLLoader();
@@ -72,6 +76,14 @@ public class IPInputFXMLController {
             } catch (IOException ex) {
                 Logger.getLogger(IPInputFXMLController.class.getName()).log(Level.SEVERE, null, ex);
             }
+        }
+        else{
+            Alert dialog = new Alert(Alert.AlertType.ERROR);
+            dialog.initModality(Modality.NONE);
+            dialog.setTitle("Error");
+            dialog.setHeaderText("There was an error connecting to the server.");
+            dialog.setContentText("The ip provided is not valid.");
+            dialog.show();
         }
     }
 }
