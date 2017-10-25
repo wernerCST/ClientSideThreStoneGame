@@ -8,6 +8,7 @@ package com.mycompany.clientside.connection;
 import java.io.IOException;
 import java.io.*;
 import java.net.*;
+import java.util.Arrays;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -18,36 +19,42 @@ import java.util.logging.Logger;
  */
 public class Connection {
     
-    private final int port = 7;
-    private final String server = "10.172.14.194";
-    private static final int BUFSIZE = 32; 
+    private final int port;
+    private final String server;
+    private static int BUFSIZE;
     
     public Connection() {
-        
+        port = 7;
+        server = "10.172.15.30";
+        BUFSIZE = 32;         
     }
-    public void connectToServer() {
+    public byte[] connectToServer(String ip, int userMsg) {
+        System.out.println("1.2");
         int msgSize;
         byte[] serverMsg = new byte[BUFSIZE];
         try {
-            Socket sk = new Socket(server, port);
+            System.out.println("1.3");
+            Socket sk = new Socket(ip, port);
             InputStream in = sk.getInputStream();
             OutputStream out = sk.getOutputStream();
-            byte[] msg = getUserInput();
+            System.out.println("1.4");
+            byte[] msg = new byte[32];
+            msg[0] =  (byte) userMsg;
             out.write(msg);
+            System.out.println("1.5");
+            int i = 0;
+            byte[] res = new byte[32];
             while((msgSize = in.read(serverMsg)) != -1) {
-                System.out.println("server said --->  " + new String(serverMsg));
+                System.out.println("server said --->  " + Arrays.toString(serverMsg));
+                res = serverMsg; 
+                System.out.println("res --->  " + Arrays.toString(res));
+                break;
             }
+            sk.close();
+            return res;            
         } catch (IOException ex) {
             System.out.println("something went bad " + ex.getMessage());
         }
-        
-    }
-
-    private byte[] getUserInput() {        
-        Scanner in = new Scanner(System.in);
-        byte[] bts = in.next().getBytes();
-        in.close();
-        return bts;
-    }
-    
+        return null;        
+    }    
 }

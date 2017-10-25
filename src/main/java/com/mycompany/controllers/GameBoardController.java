@@ -2,29 +2,18 @@
  * Sample Skeleton for 'GameBoardFXML.fxml' Controller Class
  */
 
-import com.mycompany.controllers.IPInputFXMLController;
-import com.mycompany.stones.MainApp;
-import java.io.IOException;
+package com.mycompany.controllers;
+
+import com.mycompany.clientside.connection.Connection;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
-import javafx.stage.Stage;
 
-public class GameBoardController{
+public class GameBoardController {
 
-    private boolean gameOver;
-    
     @FXML // ResourceBundle that was given to the FXMLLoader
     private ResourceBundle resources;
 
@@ -256,6 +245,14 @@ public class GameBoardController{
     @FXML // fx:id="exitBtn"
     private Button exitBtn; // Value injected by FXMLLoader
 
+    @FXML
+    void handleExit(ActionEvent event) {
+
+    }
+    private Connection con;
+    public GameBoardController() {
+        super();
+    }
     @FXML // This method is called by the FXMLLoader when initialization is complete
     void initialize() {
         assert btn42 != null : "fx:id=\"btn42\" was not injected: check your FXML file 'GameBoardFXML.fxml'.";
@@ -335,38 +332,9 @@ public class GameBoardController{
         assert exitBtn != null : "fx:id=\"exitBtn\" was not injected: check your FXML file 'GameBoardFXML.fxml'.";
 
     }
-    
-    @FXML
-    void handleExit(ActionEvent event) {
-        //Platform.exit();
-        gameOver();
+
+    public void setConnectionObject(Connection con) {
+        this.con = con;
+        if(con == null){System.out.println("0 fuck");}
     }
-    
-    //Figure out how gameOver is gonna be called. and figure out how to close the board.
-    void gameOver(){
-        gameOver = true;
-        if(gameOver == true){
-            try {
-                Stage stage = new Stage();
-                FXMLLoader loader = new FXMLLoader();
-                
-                loader.setLocation(MainApp.class.getResource("/fxml/GameOverFXML.fxml"));
-                
-                Parent parent = (AnchorPane) loader.load();
-                Scene scene = new Scene(parent);
-                stage.setScene(scene);
-                
-                stage.show();
-                
-                //Stage close = (Stage) newGameBtn.getScene().getWindow();
-                //close.close();
-                
-            } catch (IOException ex) {
-                Logger.getLogger(IPInputFXMLController.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-    }
-    
-    //Need to update at each round the scores, number of pebbles
-    //Need to check whose turn it is (white or black) to be able to put right color in imageview
 }

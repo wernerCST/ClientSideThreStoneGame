@@ -8,11 +8,15 @@ package com.mycompany.stones;
 import com.mycompany.clientside.connection.Connection;
 import com.mycompany.clientside.connection.Connection;
 import com.mycompany.controllers.IPInputFXMLController;
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.ResourceBundle;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
@@ -24,23 +28,34 @@ import javafx.stage.Stage;
 public class MainApp extends Application {
 
     private Stage stage;
+    private final Connection con;
+    private Stage primaryStage;
+    private Parent rootPane;
+    
+    public MainApp() {
+        super();
+        con = new Connection();
+    }
     
     @Override
     public void start(Stage stage) throws Exception {
-        
-        this.stage = stage;
-        
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(this.getClass().getResource("/fxml/IPInputFXML.fxml"));
-        Parent root = (AnchorPane) loader.load();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        
-        stage.setTitle("IP Input");
-        stage.show();
-        
-        //Connection con = new Connection();
-        //con.connectToServer();
+        this.primaryStage = stage;
+        initRootLayout();
+        primaryStage.show(); 
+    }
+        public void initRootLayout() {
+        try {
+            // Instantiate a FXMLLoader object
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("/fxml/IPInputFXML.fxml"));
+            rootPane = (AnchorPane) loader.load();
+            Scene scene = new Scene(rootPane);
+            primaryStage.setScene(scene);
+            IPInputFXMLController controller = loader.getController();
+            controller.setConnectionObject(con);
+        } catch (IOException ex) {
+            errorAlert(ex.getMessage());
+        }
     }
 
     /**
@@ -54,4 +69,11 @@ public class MainApp extends Application {
     public static void main(String[] args) {
         launch(args);
     }
+    private void errorAlert(String msg) {
+        Alert dialog = new Alert(Alert.AlertType.ERROR);
+        dialog.setTitle("Error");
+        dialog.setHeaderText("!!");
+        dialog.setContentText(msg);
+        dialog.show();
+    }  
 }

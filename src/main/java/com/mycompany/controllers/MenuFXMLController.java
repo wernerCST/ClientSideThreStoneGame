@@ -4,22 +4,22 @@
 
 package com.mycompany.controllers;
 
+import com.mycompany.clientside.connection.Connection;
 import com.mycompany.stones.MainApp;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+
 
 public class MenuFXMLController {
 
@@ -35,7 +35,7 @@ public class MenuFXMLController {
     @FXML
     private Button exitBtn;
 
-
+    private Connection con;
     public MenuFXMLController(){
         super();
     }
@@ -53,24 +53,44 @@ public class MenuFXMLController {
 
     @FXML
     void handleNewGame(ActionEvent event) {
+        System.out.println("-1-- handleNewGame");
+        byte[] response = con.connectToServer("10.172.15.30", 1);
+        System.out.println("-2-- handleNewGame");
+        if(response[0] == 1){  
+            System.out.println("-3-- handleNewGame");
         try {
-            Stage stage = new Stage();
-            FXMLLoader loader = new FXMLLoader();
+            Stage primaryStage = new Stage();
+            FXMLLoader loader = new FXMLLoader();               
+            loader.setLocation(MainApp.class.getResource("/fxml/GameBoardFXML.fxml"));                
+            Parent rootPane = (BorderPane) loader.load();
+            Scene scene = new Scene(rootPane);
+            primaryStage.setScene(scene);
+            GameBoardController game = loader.getController();
+            game.setConnectionObject(con);
                 
-            loader.setLocation(MainApp.class.getResource("/fxml/GameBoardFXML.fxml"));
-                
-            Parent parent = (BorderPane) loader.load();
-            Scene scene = new Scene(parent);
-            stage.setScene(scene);
-                
-            stage.show();
-               
+            primaryStage.show();
+
             Stage close = (Stage) newGameBtn.getScene().getWindow();
             close.close();
                 
         } catch (IOException ex) {
-            Logger.getLogger(IPInputFXMLController.class.getName()).log(Level.SEVERE, null, ex);
+            errorAlert(ex.getMessage());
         }
+        } else {
+            errorAlert("Sorry please try again");
+        }
+    }
+    private void errorAlert(String msg) {
+        Alert dialog = new Alert(Alert.AlertType.ERROR);
+        dialog.setTitle("Error");
+        dialog.setHeaderText("!!");
+        dialog.setContentText(msg);
+        dialog.show();
+    } 
+
+    public void setConnectionObject(Connection con) {
+        this.con = con;
+        if(con == null){System.out.println("menu fuck");}
     }
     
 }
