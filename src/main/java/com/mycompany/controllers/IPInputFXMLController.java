@@ -56,7 +56,7 @@ public class IPInputFXMLController {
     @FXML
     void handleInput(ActionEvent event) {
         //should check if IP is valid or not
-        Pattern pattern = Pattern.compile("\\d+\\.\\d+\\.\\d+");
+        Pattern pattern = Pattern.compile("\\d{1,3}+\\.\\d{1,3}+\\.\\d{1,3}+(\\.\\d{1,3}+)?");
         if(pattern.matcher(IPTextField.getText()).matches()){
             try {
                 Stage stage = new Stage();
