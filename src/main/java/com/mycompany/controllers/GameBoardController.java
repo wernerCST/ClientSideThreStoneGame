@@ -5,11 +5,14 @@
 package com.mycompany.controllers;
 
 import com.mycompany.clientside.connection.Connection;
+import com.mycompany.stones.MainApp;
 import java.net.URL;
+import java.util.Arrays;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 public class GameBoardController {
@@ -246,12 +249,46 @@ public class GameBoardController {
     private Button exitBtn; // Value injected by FXMLLoader
 
     @FXML
-    void handleExit(ActionEvent event) {
+    void handleExit(ActionEvent e) {
+         t++;
+       int[] msg = new int[3];
+                msg[0] = 2;
+                msg[1] = 4;
+                msg[2] = 2;
+                ImageView img = new ImageView();
+                
+                
+        con.connectToServer(msg);
+        System.out.println("-------PAUSE FOR SERVER-- "+ t + " -----");
+        byte[] response = con.serverRead();
+        
+        if(t == 1) {
+            iv58.setImage(white);
+        }else if(t == 2) {
+            iv58.setImage(black);
+            t = 0;
+        }
+        System.out.println(Arrays.toString(response) + "       <------------");
 
     }
+    @FXML
+    void onPlayerMove(ActionEvent e) {
+        int[] msg = new int[3];
+        msg[0] = 0;
+        msg[1] = 4;
+        msg[2] = 2;        
+        System.out.println(e.getTarget() + "       <------------");
+
+    }
+    private int t = 0;
     private Connection con;
+    Image black;
+    Image white;
+  //  Image white = new Image("white.png");
     public GameBoardController() {
         super();
+        black = new Image("images/black.png");
+        white = new Image("images/white.png");
     }
     @FXML // This method is called by the FXMLLoader when initialization is complete
     void initialize() {
@@ -292,14 +329,20 @@ public class GameBoardController {
         assert btn48 != null : "fx:id=\"btn48\" was not injected: check your FXML file 'GameBoardFXML.fxml'.";
         assert btn58 != null : "fx:id=\"btn58\" was not injected: check your FXML file 'GameBoardFXML.fxml'.";
         assert btn68 != null : "fx:id=\"btn68\" was not injected: check your FXML file 'GameBoardFXML.fxml'.";
+       
+        
+        //3
         assert iv42 != null : "fx:id=\"iv42\" was not injected: check your FXML file 'GameBoardFXML.fxml'.";
         assert iv52 != null : "fx:id=\"iv52\" was not injected: check your FXML file 'GameBoardFXML.fxml'.";
         assert iv62 != null : "fx:id=\"iv62\" was not injected: check your FXML file 'GameBoardFXML.fxml'.";
+       
+        //5
         assert iv33 != null : "fx:id=\"iv33\" was not injected: check your FXML file 'GameBoardFXML.fxml'.";
         assert iv43 != null : "fx:id=\"iv43\" was not injected: check your FXML file 'GameBoardFXML.fxml'.";
         assert iv53 != null : "fx:id=\"iv53\" was not injected: check your FXML file 'GameBoardFXML.fxml'.";
         assert iv63 != null : "fx:id=\"iv63\" was not injected: check your FXML file 'GameBoardFXML.fxml'.";
         assert iv73 != null : "fx:id=\"iv73\" was not injected: check your FXML file 'GameBoardFXML.fxml'.";
+       //7
         assert iv24 != null : "fx:id=\"iv24\" was not injected: check your FXML file 'GameBoardFXML.fxml'.";
         assert iv34 != null : "fx:id=\"iv34\" was not injected: check your FXML file 'GameBoardFXML.fxml'.";
         assert iv44 != null : "fx:id=\"iv44\" was not injected: check your FXML file 'GameBoardFXML.fxml'.";
@@ -307,13 +350,17 @@ public class GameBoardController {
         assert iv64 != null : "fx:id=\"iv64\" was not injected: check your FXML file 'GameBoardFXML.fxml'.";
         assert iv74 != null : "fx:id=\"iv74\" was not injected: check your FXML file 'GameBoardFXML.fxml'.";
         assert iv84 != null : "fx:id=\"iv84\" was not injected: check your FXML file 'GameBoardFXML.fxml'.";
+        
+        //7
         assert iv25 != null : "fx:id=\"iv25\" was not injected: check your FXML file 'GameBoardFXML.fxml'.";
         assert iv35 != null : "fx:id=\"iv35\" was not injected: check your FXML file 'GameBoardFXML.fxml'.";
         assert iv45 != null : "fx:id=\"iv45\" was not injected: check your FXML file 'GameBoardFXML.fxml'.";
         assert iv55 != null : "fx:id=\"iv55\" was not injected: check your FXML file 'GameBoardFXML.fxml'.";
         assert iv65 != null : "fx:id=\"iv65\" was not injected: check your FXML file 'GameBoardFXML.fxml'.";
-        assert iv75 != null : "fx:id=\"iv75\" was not injected: check your FXML file 'GameBoardFXML.fxml'.";
+        assert iv75 != null : "fx:id=\"iv75\" was not injected: check your FXML file 'GameBoardFXML.fxml'.";        
         assert iv85 != null : "fx:id=\"iv85\" was not injected: check your FXML file 'GameBoardFXML.fxml'.";
+        
+        //7
         assert iv26 != null : "fx:id=\"iv26\" was not injected: check your FXML file 'GameBoardFXML.fxml'.";
         assert iv36 != null : "fx:id=\"iv36\" was not injected: check your FXML file 'GameBoardFXML.fxml'.";
         assert iv46 != null : "fx:id=\"iv46\" was not injected: check your FXML file 'GameBoardFXML.fxml'.";
@@ -321,20 +368,34 @@ public class GameBoardController {
         assert iv66 != null : "fx:id=\"iv66\" was not injected: check your FXML file 'GameBoardFXML.fxml'.";
         assert iv76 != null : "fx:id=\"iv76\" was not injected: check your FXML file 'GameBoardFXML.fxml'.";
         assert iv86 != null : "fx:id=\"iv86\" was not injected: check your FXML file 'GameBoardFXML.fxml'.";
+       //5
         assert iv37 != null : "fx:id=\"iv37\" was not injected: check your FXML file 'GameBoardFXML.fxml'.";
         assert iv47 != null : "fx:id=\"iv47\" was not injected: check your FXML file 'GameBoardFXML.fxml'.";
         assert iv57 != null : "fx:id=\"iv57\" was not injected: check your FXML file 'GameBoardFXML.fxml'.";
         assert iv67 != null : "fx:id=\"iv67\" was not injected: check your FXML file 'GameBoardFXML.fxml'.";
         assert iv77 != null : "fx:id=\"iv77\" was not injected: check your FXML file 'GameBoardFXML.fxml'.";
+        //3
         assert iv48 != null : "fx:id=\"iv48\" was not injected: check your FXML file 'GameBoardFXML.fxml'.";
         assert iv58 != null : "fx:id=\"iv58\" was not injected: check your FXML file 'GameBoardFXML.fxml'.";
         assert iv68 != null : "fx:id=\"iv68\" was not injected: check your FXML file 'GameBoardFXML.fxml'.";
+       
+        
+        
+        
         assert exitBtn != null : "fx:id=\"exitBtn\" was not injected: check your FXML file 'GameBoardFXML.fxml'.";
+        
+        
+       
 
     }
 
     public void setConnectionObject(Connection con) {
         this.con = con;
         if(con == null){System.out.println("0 fuck");}
+    }
+    public void setArrays() {
+        ImageView[][] arr = new ImageView[7][];
+        
+       
     }
 }
