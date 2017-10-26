@@ -24,19 +24,21 @@ public class Connection {
     private String server;
     private static int BUFSIZE;
     private Socket sk;
+    private byte[] res;
     
     /**
      * Sets the port number to its default as well as the BUFSIZE.
      */
     public Connection() {
         port = 7;
-        BUFSIZE = 32;    
+        BUFSIZE = 32;  
+        res = new byte[BUFSIZE];
     }
     /**
      * Sends the a given message to the serve.
      * @param userMsg 
      */
-    public void connectToServer(int[] userMsg) {
+    public boolean connectToServer(int[] userMsg) {
         System.out.println("1.2");
         int msgSize;
         byte[] res = new byte[32];
@@ -54,16 +56,17 @@ public class Connection {
             out.write(msg);                
         } catch (IOException ex) {
             System.out.println("something went bad " + ex.getMessage());
-        }       
+        } 
+        return true;
     }    
     /**
      * Gets the InputStream being received from the server.
      * @return 
      */
-    public byte[] serverRead() {
+    public boolean serverRead() {
         System.out.println("1.2");
         int msgSize;
-        byte[] res = new byte[32];
+        this.res = new byte[32];
         res[0] = 0;
         byte[] serverMsg = new byte[BUFSIZE];
         try {
@@ -71,7 +74,7 @@ public class Connection {
             int i = 0;
             while((msgSize = in.read(serverMsg)) != -1) {
                 System.out.println("server said --->  " + Arrays.toString(serverMsg));
-                res = serverMsg; 
+                this.res = serverMsg; 
                 System.out.println("res --->  " + Arrays.toString(res));
                 break;
             }
@@ -79,8 +82,12 @@ public class Connection {
         } catch (IOException ex) {
             System.out.println("something went bad " + ex.getMessage());
         }
-        return res;        
+        
+        return true;
     } 
+    public byte[] getRes() {
+        return this.res;
+    }
     /**
      * Creates the Socket for any connection to be made, in order for 
      * this bean to do what it can do this method must be called

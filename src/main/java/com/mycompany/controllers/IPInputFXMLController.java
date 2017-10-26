@@ -77,7 +77,8 @@ public class IPInputFXMLController {
         int[] msg = new int[3];
         msg[0] = 0;
         con.connectToServer(msg);
-        byte[] response = con.serverRead();
+        con.serverRead();
+        byte[] response = con.getRes();
         
         if(response[0] == 1){                
             try {

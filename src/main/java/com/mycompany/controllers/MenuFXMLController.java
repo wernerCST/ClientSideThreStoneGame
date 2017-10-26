@@ -57,7 +57,8 @@ public class MenuFXMLController {
         int[] msg = new int[1];
         msg[0] = 1;
         con.connectToServer(msg);
-        byte[] response = con.serverRead();
+        con.serverRead();
+        byte[] response = con.getRes();
         System.out.println("-2-- handleNewGame");
         if(response[0] == 1){  
             System.out.println("-3-- handleNewGame");
