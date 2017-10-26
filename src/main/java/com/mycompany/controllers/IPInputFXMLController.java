@@ -15,6 +15,7 @@ import java.util.ResourceBundle;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Pattern;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -60,6 +61,12 @@ public class IPInputFXMLController {
     void handleInput(ActionEvent event)  {
         //should check if IP is valid or not
         String ip = IPTextField.getText();
+        Pattern pattern = Pattern.compile("\\d{1,3}+\\.\\d{1,3}+\\.\\d{1,3}+(\\.\\d{1,3}+)?");
+        if(!pattern.matcher(IPTextField.getText()).matches()) {
+            errorAlert("Sorry that is n0ot a valid ip");
+            return;
+        }
+        
        try{
            con.setIP(ip);
        } catch (IOException ex) {
@@ -69,8 +76,6 @@ public class IPInputFXMLController {
         System.out.println(ip);
         int[] msg = new int[3];
         msg[0] = 0;
-        msg[1] = 4;
-        msg[2] = 2;
         con.connectToServer(msg);
         byte[] response = con.serverRead();
         
