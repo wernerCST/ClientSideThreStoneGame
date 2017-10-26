@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
@@ -41,80 +42,467 @@
           <RowConstraints minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button fx:id="btn42" mnemonicParsing="false" onAction="#onPlayerMove" opacity="0.0" prefWidth="42.0" GridPane.columnIndex="4" GridPane.rowIndex="2" />
-            <Button fx:id="btn52" mnemonicParsing="false" onAction="#onPlayerMove" opacity="0.0" prefWidth="42.0" GridPane.columnIndex="5" GridPane.rowIndex="2" />
-            <Button fx:id="btn62" mnemonicParsing="false" onAction="#onPlayerMove" opacity="0.0" prefWidth="42.0" GridPane.columnIndex="6" GridPane.rowIndex="2" />
-            <Button fx:id="btn33" mnemonicParsing="false" onAction="#onPlayerMove" opacity="0.0" prefWidth="42.0" GridPane.columnIndex="3" GridPane.rowIndex="3" />
-            <Button fx:id="btn43" mnemonicParsing="false" onAction="#onPlayerMove" opacity="0.0" prefWidth="42.0" GridPane.columnIndex="4" GridPane.rowIndex="3" />
-            <Button fx:id="btn53" mnemonicParsing="false" onAction="#onPlayerMove" opacity="0.0" prefWidth="42.0" GridPane.columnIndex="5" GridPane.rowIndex="3" />
-            <Button fx:id="btn63" mnemonicParsing="false" onAction="#onPlayerMove" opacity="0.0" prefWidth="42.0" GridPane.columnIndex="6" GridPane.rowIndex="3" />
-            <Button fx:id="btn73" mnemonicParsing="false" onAction="#onPlayerMove" opacity="0.0" prefWidth="42.0" GridPane.columnIndex="7" GridPane.rowIndex="3" />
-            <Button fx:id="btn24" mnemonicParsing="false" onAction="#onPlayerMove" opacity="0.0" prefWidth="42.0" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-            <Button fx:id="btn34" mnemonicParsing="false" onAction="#onPlayerMove" opacity="0.0" prefWidth="42.0" GridPane.columnIndex="3" GridPane.rowIndex="4" />
-            <Button fx:id="btn44" mnemonicParsing="false" onAction="#onPlayerMove" opacity="0.0" prefWidth="42.0" GridPane.columnIndex="4" GridPane.rowIndex="4" />
-            <Button fx:id="btn54" mnemonicParsing="false" onAction="#onPlayerMove" opacity="0.0" prefWidth="42.0" GridPane.columnIndex="5" GridPane.rowIndex="4" />
-            <Button fx:id="btn64" mnemonicParsing="false" onAction="#onPlayerMove" opacity="0.0" prefWidth="42.0" GridPane.columnIndex="6" GridPane.rowIndex="4" />
-            <Button fx:id="btn74" mnemonicParsing="false" onAction="#onPlayerMove" opacity="0.0" prefWidth="42.0" GridPane.columnIndex="7" GridPane.rowIndex="4" />
-            <Button fx:id="btn84" mnemonicParsing="false" onAction="#onPlayerMove" opacity="0.0" prefWidth="42.0" GridPane.columnIndex="8" GridPane.rowIndex="4" />
-            <Button fx:id="btn25" mnemonicParsing="false" onAction="#onPlayerMove" opacity="0.0" prefWidth="42.0" GridPane.columnIndex="2" GridPane.rowIndex="5" />
-            <Button fx:id="btn35" mnemonicParsing="false" onAction="#onPlayerMove" opacity="0.0" prefWidth="42.0" GridPane.columnIndex="3" GridPane.rowIndex="5" />
-            <Button fx:id="btn45" mnemonicParsing="false" onAction="#onPlayerMove" opacity="0.0" prefWidth="42.0" GridPane.columnIndex="4" GridPane.rowIndex="5" />
-            <Button fx:id="btn55" mnemonicParsing="false" onAction="#onPlayerMove" opacity="0.0" prefWidth="42.0" GridPane.columnIndex="5" GridPane.rowIndex="5" />
-            <Button fx:id="btn65" mnemonicParsing="false" onAction="#onPlayerMove" opacity="0.0" prefWidth="42.0" GridPane.columnIndex="6" GridPane.rowIndex="5" />
-            <Button fx:id="btn75" mnemonicParsing="false" onAction="#onPlayerMove" opacity="0.0" prefWidth="42.0" GridPane.columnIndex="7" GridPane.rowIndex="5" />
-            <Button fx:id="btn85" mnemonicParsing="false" onAction="#onPlayerMove" opacity="0.0" prefWidth="42.0" GridPane.columnIndex="8" GridPane.rowIndex="5" />
-            <Button fx:id="btn26" mnemonicParsing="false" onAction="#onPlayerMove" opacity="0.0" prefWidth="42.0" GridPane.columnIndex="2" GridPane.rowIndex="6" />
-            <Button fx:id="btn36" mnemonicParsing="false" onAction="#onPlayerMove" opacity="0.0" prefWidth="42.0" GridPane.columnIndex="3" GridPane.rowIndex="6" />
-            <Button fx:id="btn46" mnemonicParsing="false" onAction="#onPlayerMove" opacity="0.0" prefWidth="42.0" GridPane.columnIndex="4" GridPane.rowIndex="6" />
-            <Button fx:id="btn56" mnemonicParsing="false" onAction="#onPlayerMove" opacity="0.0" prefWidth="42.0" GridPane.columnIndex="5" GridPane.rowIndex="6" />
-            <Button fx:id="btn66" mnemonicParsing="false" onAction="#onPlayerMove" opacity="0.0" prefWidth="42.0" GridPane.columnIndex="6" GridPane.rowIndex="6" />
-            <Button fx:id="btn76" mnemonicParsing="false" onAction="#onPlayerMove" opacity="0.0" prefWidth="42.0" GridPane.columnIndex="7" GridPane.rowIndex="6" />
-            <Button fx:id="btn86" mnemonicParsing="false" onAction="#onPlayerMove" opacity="0.0" prefWidth="42.0" GridPane.columnIndex="8" GridPane.rowIndex="6" />
-            <Button fx:id="btn37" mnemonicParsing="false" onAction="#onPlayerMove" opacity="0.0" prefWidth="42.0" GridPane.columnIndex="3" GridPane.rowIndex="7" />
-            <Button fx:id="btn47" mnemonicParsing="false" onAction="#onPlayerMove" opacity="0.0" prefWidth="42.0" GridPane.columnIndex="4" GridPane.rowIndex="7" />
-            <Button fx:id="btn57" mnemonicParsing="false" onAction="#onPlayerMove" opacity="0.0" prefWidth="42.0" GridPane.columnIndex="5" GridPane.rowIndex="7" />
-            <Button fx:id="btn67" mnemonicParsing="false" onAction="#onPlayerMove" opacity="0.0" prefWidth="42.0" GridPane.columnIndex="6" GridPane.rowIndex="7" />
-            <Button fx:id="btn77" mnemonicParsing="false" onAction="#onPlayerMove" opacity="0.0" prefWidth="42.0" GridPane.columnIndex="7" GridPane.rowIndex="7" />
-            <Button fx:id="btn48" mnemonicParsing="false" onAction="#onPlayerMove" opacity="0.0" prefWidth="42.0" GridPane.columnIndex="4" GridPane.rowIndex="8" />
-            <Button fx:id="btn58" mnemonicParsing="false" onAction="#onPlayerMove" opacity="0.0" prefWidth="42.0" GridPane.columnIndex="5" GridPane.rowIndex="8" />
-            <Button fx:id="btn68" mnemonicParsing="false" onAction="#onPlayerMove" opacity="0.0" prefWidth="42.0" GridPane.columnIndex="6" GridPane.rowIndex="8" />
-            <ImageView fx:id="iv42" fitHeight="30.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="2" />
-            <ImageView fx:id="iv52" fitHeight="30.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="2" />
-            <ImageView fx:id="iv62" fitHeight="30.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="2" />
-            <ImageView fx:id="iv33" fitHeight="30.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="3" />
-            <ImageView fx:id="iv43" fitHeight="30.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="3" />
-            <ImageView fx:id="iv53" fitHeight="30.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="3" />
-            <ImageView fx:id="iv63" fitHeight="30.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="3" />
-            <ImageView fx:id="iv73" fitHeight="30.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" GridPane.rowIndex="3" />
-            <ImageView fx:id="iv24" fitHeight="30.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-            <ImageView fx:id="iv34" fitHeight="30.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="4" />
-            <ImageView fx:id="iv44" fitHeight="30.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="4" />
-            <ImageView fx:id="iv54" fitHeight="30.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="4" />
-            <ImageView fx:id="iv64" fitHeight="30.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="4" />
-            <ImageView fx:id="iv74" fitHeight="30.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" GridPane.rowIndex="4" />
-            <ImageView fx:id="iv84" fitHeight="30.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="8" GridPane.rowIndex="4" />
-            <ImageView fx:id="iv25" fitHeight="30.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="5" />
-            <ImageView fx:id="iv35" fitHeight="30.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="5" />
-            <ImageView fx:id="iv45" fitHeight="30.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="5" />
-            <ImageView fx:id="iv55" fitHeight="30.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="5" />
-            <ImageView fx:id="iv65" fitHeight="30.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="5" />
-            <ImageView fx:id="iv75" fitHeight="30.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" GridPane.rowIndex="5" />
-            <ImageView fx:id="iv85" fitHeight="30.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="8" GridPane.rowIndex="5" />
-            <ImageView fx:id="iv26" fitHeight="30.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="6" />
-            <ImageView fx:id="iv36" fitHeight="30.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="6" />
-            <ImageView fx:id="iv46" fitHeight="30.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="6" />
-            <ImageView fx:id="iv56" fitHeight="30.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="6" />
-            <ImageView fx:id="iv66" fitHeight="30.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="6" />
-            <ImageView fx:id="iv76" fitHeight="30.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" GridPane.rowIndex="6" />
-            <ImageView fx:id="iv86" fitHeight="30.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="8" GridPane.rowIndex="6" />
-            <ImageView fx:id="iv37" fitHeight="30.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="7" />
-            <ImageView fx:id="iv47" fitHeight="30.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="7" />
-            <ImageView fx:id="iv57" fitHeight="30.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="7" />
-            <ImageView fx:id="iv67" fitHeight="30.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="7" />
-            <ImageView fx:id="iv77" fitHeight="30.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" GridPane.rowIndex="7" />
-            <ImageView fx:id="iv48" fitHeight="30.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="8" />
-            <ImageView fx:id="iv58" fitHeight="30.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="8" />
-            <ImageView fx:id="iv68" fitHeight="30.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="8" />
+            <ImageView fitHeight="27.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../wall.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="27.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="10">
+               <image>
+                  <Image url="@../../../../wall.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="27.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="9">
+               <image>
+                  <Image url="@../../../../wall.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="27.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="8">
+               <image>
+                  <Image url="@../../../../wall.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="27.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7">
+               <image>
+                  <Image url="@../../../../wall.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="27.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6">
+               <image>
+                  <Image url="@../../../../wall.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="27.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5">
+               <image>
+                  <Image url="@../../../../wall.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="27.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4">
+               <image>
+                  <Image url="@../../../../wall.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="27.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3">
+               <image>
+                  <Image url="@../../../../wall.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="27.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2">
+               <image>
+                  <Image url="@../../../../wall.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="27.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
+               <image>
+                  <Image url="@../../../../wall.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="27.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1">
+               <image>
+                  <Image url="@../../../../wall.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="27.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="10" GridPane.rowIndex="1">
+               <image>
+                  <Image url="@../../../../wall.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="27.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="9" GridPane.rowIndex="1">
+               <image>
+                  <Image url="@../../../../wall.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="27.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="8" GridPane.rowIndex="1">
+               <image>
+                  <Image url="@../../../../wall.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="27.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" GridPane.rowIndex="1">
+               <image>
+                  <Image url="@../../../../wall.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="27.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="1">
+               <image>
+                  <Image url="@../../../../wall.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="27.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="1">
+               <image>
+                  <Image url="@../../../../wall.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="27.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="1">
+               <image>
+                  <Image url="@../../../../wall.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="27.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="1">
+               <image>
+                  <Image url="@../../../../wall.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="27.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="1">
+               <image>
+                  <Image url="@../../../../wall.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="27.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <image>
+                  <Image url="@../../../../wall.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="27.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="10" GridPane.rowIndex="2">
+               <image>
+                  <Image url="@../../../../wall.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="27.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="9" GridPane.rowIndex="2">
+               <image>
+                  <Image url="@../../../../wall.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="27.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="8" GridPane.rowIndex="2">
+               <image>
+                  <Image url="@../../../../wall.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="27.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" GridPane.rowIndex="2">
+               <image>
+                  <Image url="@../../../../wall.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="27.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="2">
+               <image>
+                  <Image url="@../../../../wall.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="27.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="2">
+               <image>
+                  <Image url="@../../../../wall.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="27.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <image>
+                  <Image url="@../../../../wall.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="27.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="2">
+               <image>
+                  <Image url="@../../../../wall.png" />
+               </image>
+            </ImageView>
+            <Button mnemonicParsing="false" text="Button" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+            <Button mnemonicParsing="false" text="Button" GridPane.columnIndex="5" GridPane.rowIndex="2" />
+            <Button mnemonicParsing="false" text="Button" GridPane.columnIndex="6" GridPane.rowIndex="2" />
+            <Button mnemonicParsing="false" text="Button" GridPane.columnIndex="5" GridPane.rowIndex="3" />
+            <Button mnemonicParsing="false" text="Button" GridPane.columnIndex="4" GridPane.rowIndex="3" />
+            <Button mnemonicParsing="false" text="Button" GridPane.columnIndex="6" GridPane.rowIndex="3" />
+            <Button mnemonicParsing="false" text="Button" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+            <Button mnemonicParsing="false" text="Button" GridPane.columnIndex="7" GridPane.rowIndex="3" />
+            <Button mnemonicParsing="false" text="Button" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+            <Button mnemonicParsing="false" text="Button" GridPane.columnIndex="4" GridPane.rowIndex="4" />
+            <Button mnemonicParsing="false" text="Button" GridPane.columnIndex="5" GridPane.rowIndex="4" />
+            <Button mnemonicParsing="false" text="Button" GridPane.columnIndex="6" GridPane.rowIndex="4" />
+            <Button mnemonicParsing="false" text="Button" GridPane.columnIndex="7" GridPane.rowIndex="4" />
+            <Button mnemonicParsing="false" text="Button" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+            <Button mnemonicParsing="false" text="Button" GridPane.columnIndex="8" GridPane.rowIndex="4" />
+            <Button mnemonicParsing="false" text="Button" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+            <Button mnemonicParsing="false" text="Button" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+            <Button mnemonicParsing="false" text="Button" GridPane.columnIndex="4" GridPane.rowIndex="5" />
+            <Button mnemonicParsing="false" text="Button" GridPane.columnIndex="6" GridPane.rowIndex="5" />
+            <Button mnemonicParsing="false" text="Button" GridPane.columnIndex="7" GridPane.rowIndex="5" />
+            <Button mnemonicParsing="false" text="Button" GridPane.columnIndex="8" GridPane.rowIndex="5" />
+            <Button mnemonicParsing="false" text="Button" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+            <Button mnemonicParsing="false" text="Button" GridPane.columnIndex="3" GridPane.rowIndex="6" />
+            <Button mnemonicParsing="false" text="Button" GridPane.columnIndex="4" GridPane.rowIndex="6" />
+            <Button mnemonicParsing="false" text="Button" GridPane.columnIndex="5" GridPane.rowIndex="6" />
+            <Button mnemonicParsing="false" text="Button" GridPane.columnIndex="6" GridPane.rowIndex="6" />
+            <Button mnemonicParsing="false" text="Button" GridPane.columnIndex="7" GridPane.rowIndex="6" />
+            <Button mnemonicParsing="false" text="Button" GridPane.columnIndex="8" GridPane.rowIndex="6" />
+            <Button mnemonicParsing="false" text="Button" GridPane.columnIndex="3" GridPane.rowIndex="7" />
+            <Button mnemonicParsing="false" text="Button" GridPane.columnIndex="4" GridPane.rowIndex="7" />
+            <Button mnemonicParsing="false" text="Button" GridPane.columnIndex="5" GridPane.rowIndex="7" />
+            <Button mnemonicParsing="false" text="Button" GridPane.columnIndex="6" GridPane.rowIndex="7" />
+            <Button mnemonicParsing="false" text="Button" GridPane.columnIndex="7" GridPane.rowIndex="7" />
+            <Button mnemonicParsing="false" text="Button" GridPane.columnIndex="4" GridPane.rowIndex="8" />
+            <Button mnemonicParsing="false" text="Button" GridPane.columnIndex="5" GridPane.rowIndex="8" />
+            <Button mnemonicParsing="false" text="Button" GridPane.columnIndex="6" GridPane.rowIndex="8" />
+            <ImageView fitHeight="27.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="10" GridPane.rowIndex="3">
+               <image>
+                  <Image url="@../../../../wall.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="27.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="9" GridPane.rowIndex="3">
+               <image>
+                  <Image url="@../../../../wall.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="27.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="8" GridPane.rowIndex="3">
+               <image>
+                  <Image url="@../../../../wall.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="27.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="3">
+               <image>
+                  <Image url="@../../../../wall.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="27.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <image>
+                  <Image url="@../../../../wall.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="27.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="3">
+               <image>
+                  <Image url="@../../../../wall.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="27.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="10" GridPane.rowIndex="4">
+               <image>
+                  <Image url="@../../../../wall.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="27.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="9" GridPane.rowIndex="4">
+               <image>
+                  <Image url="@../../../../wall.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="27.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="4">
+               <image>
+                  <Image url="@../../../../wall.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="27.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="4">
+               <image>
+                  <Image url="@../../../../wall.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="27.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="10" GridPane.rowIndex="5">
+               <image>
+                  <Image url="@../../../../wall.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="27.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="9" GridPane.rowIndex="5">
+               <image>
+                  <Image url="@../../../../wall.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="27.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="5">
+               <image>
+                  <Image url="@../../../../wall.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="27.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="5">
+               <image>
+                  <Image url="@../../../../wall.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="27.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="5">
+               <image>
+                  <Image url="@../../../../wall.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="27.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="10" GridPane.rowIndex="6">
+               <image>
+                  <Image url="@../../../../wall.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="27.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="9" GridPane.rowIndex="6">
+               <image>
+                  <Image url="@../../../../wall.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="27.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="6">
+               <image>
+                  <Image url="@../../../../wall.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="27.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="6">
+               <image>
+                  <Image url="@../../../../wall.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="27.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="10" GridPane.rowIndex="7">
+               <image>
+                  <Image url="@../../../../wall.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="27.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="9" GridPane.rowIndex="7">
+               <image>
+                  <Image url="@../../../../wall.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="27.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="8" GridPane.rowIndex="7">
+               <image>
+                  <Image url="@../../../../wall.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="27.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="7">
+               <image>
+                  <Image url="@../../../../wall.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="27.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="7">
+               <image>
+                  <Image url="@../../../../wall.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="27.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="7">
+               <image>
+                  <Image url="@../../../../wall.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="27.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="10" GridPane.rowIndex="8">
+               <image>
+                  <Image url="@../../../../wall.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="27.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="9" GridPane.rowIndex="8">
+               <image>
+                  <Image url="@../../../../wall.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="27.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="8" GridPane.rowIndex="8">
+               <image>
+                  <Image url="@../../../../wall.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="27.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" GridPane.rowIndex="8">
+               <image>
+                  <Image url="@../../../../wall.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="27.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="8">
+               <image>
+                  <Image url="@../../../../wall.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="27.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="8">
+               <image>
+                  <Image url="@../../../../wall.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="27.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="8">
+               <image>
+                  <Image url="@../../../../wall.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="27.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="8">
+               <image>
+                  <Image url="@../../../../wall.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="27.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="10">
+               <image>
+                  <Image url="@../../../../wall.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="26.0" fitWidth="54.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="10" GridPane.rowIndex="10">
+               <image>
+                  <Image url="@../../../../wall.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="27.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="9" GridPane.rowIndex="10">
+               <image>
+                  <Image url="@../../../../wall.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="27.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="8" GridPane.rowIndex="10">
+               <image>
+                  <Image url="@../../../../wall.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="27.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" GridPane.rowIndex="10">
+               <image>
+                  <Image url="@../../../../wall.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="27.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="10">
+               <image>
+                  <Image url="@../../../../wall.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="27.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="10">
+               <image>
+                  <Image url="@../../../../wall.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="27.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="10">
+               <image>
+                  <Image url="@../../../../wall.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="27.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="10">
+               <image>
+                  <Image url="@../../../../wall.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="27.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="10">
+               <image>
+                  <Image url="@../../../../wall.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="27.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="10">
+               <image>
+                  <Image url="@../../../../wall.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="27.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="10" GridPane.rowIndex="9">
+               <image>
+                  <Image url="@../../../../wall.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="27.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="9" GridPane.rowIndex="9">
+               <image>
+                  <Image url="@../../../../wall.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="27.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="8" GridPane.rowIndex="9">
+               <image>
+                  <Image url="@../../../../wall.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="27.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" GridPane.rowIndex="9">
+               <image>
+                  <Image url="@../../../../wall.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="27.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="9">
+               <image>
+                  <Image url="@../../../../wall.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="27.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="9">
+               <image>
+                  <Image url="@../../../../wall.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="27.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="9">
+               <image>
+                  <Image url="@../../../../wall.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="27.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="9">
+               <image>
+                  <Image url="@../../../../wall.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="27.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="9">
+               <image>
+                  <Image url="@../../../../wall.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="27.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="9">
+               <image>
+                  <Image url="@../../../../wall.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="27.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="9">
+               <image>
+                  <Image url="@../../../../wall.png" />
+               </image>
+            </ImageView>
          </children>
       </GridPane>
    </center>

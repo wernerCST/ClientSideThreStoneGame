@@ -14,8 +14,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
- * @author 1511430
+ * This class handles the connection between the client and 
+ * the server, 
+ * @author Werner Castanaza
  */
 public class Connection {
     
@@ -24,10 +25,17 @@ public class Connection {
     private static int BUFSIZE;
     private Socket sk;
     
+    /**
+     * Sets the port number to its default as well as the BUFSIZE.
+     */
     public Connection() {
         port = 7;
         BUFSIZE = 32;    
     }
+    /**
+     * Sends the a given message to the serve.
+     * @param userMsg 
+     */
     public void connectToServer(int[] userMsg) {
         System.out.println("1.2");
         int msgSize;
@@ -43,13 +51,16 @@ public class Connection {
                 msg[i] = (byte)userMsg[i];
                 System.out.println(i + ": " +  msg[i]);
             }
-            out.write(msg);
-            System.out.println("no close()");                 
-        } catch (Exception ex) {
+            out.write(msg);                
+        } catch (IOException ex) {
             System.out.println("something went bad " + ex.getMessage());
         }       
     }    
-      public byte[] serverRead() {
+    /**
+     * Gets the InputStream being received from the server.
+     * @return 
+     */
+    public byte[] serverRead() {
         System.out.println("1.2");
         int msgSize;
         byte[] res = new byte[32];
@@ -65,11 +76,18 @@ public class Connection {
                 break;
             }
             System.out.println("no close()");                 
-        } catch (Exception ex) {
+        } catch (IOException ex) {
             System.out.println("something went bad " + ex.getMessage());
         }
         return res;        
     } 
+    /**
+     * Creates the Socket for any connection to be made, in order for 
+     * this bean to do what it can do this method must be called
+     * before the rest.
+     * @param ip
+     * @throws IOException 
+     */
       public void setIP(String ip) throws IOException {
           this.sk = new Socket(ip, port);
       }
