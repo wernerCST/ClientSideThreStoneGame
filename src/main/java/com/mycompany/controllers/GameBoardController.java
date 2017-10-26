@@ -9,12 +9,14 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -25,6 +27,8 @@ import javafx.stage.Stage;
 public class GameBoardController{
 
     private boolean gameOver;
+    String color = "black";
+    Button[][] buttons = new Button[11][11];
     
     @FXML
     private ResourceBundle resources;
@@ -145,6 +149,18 @@ public class GameBoardController{
 
     @FXML
     private Button exitBtn;
+    
+     @FXML
+    private Label pScoreLbl;
+
+    @FXML
+    private Label pLeftLbl;
+
+    @FXML
+    private Label cScoreLbl;
+
+    @FXML
+    private Label cLeftLbl;
 
     @FXML // This method is called by the FXMLLoader when initialization is complete
     void initialize() {
@@ -186,6 +202,14 @@ public class GameBoardController{
         assert btn58 != null : "fx:id=\"btn58\" was not injected: check your FXML file 'GameBoardFXML.fxml'.";
         assert btn68 != null : "fx:id=\"btn68\" was not injected: check your FXML file 'GameBoardFXML.fxml'.";
         assert exitBtn != null : "fx:id=\"exitBtn\" was not injected: check your FXML file 'GameBoardFXML.fxml'.";
+        assert pScoreLbl != null : "fx:id=\"pScoreLbl\" was not injected: check your FXML file 'GameBoardFXML.fxml'.";
+        assert pLeftLbl != null : "fx:id=\"pLeftLbl\" was not injected: check your FXML file 'GameBoardFXML.fxml'.";
+        assert cScoreLbl != null : "fx:id=\"cScoreLbl\" was not injected: check your FXML file 'GameBoardFXML.fxml'.";
+        assert cLeftLbl != null : "fx:id=\"cLeftLbl\" was not injected: check your FXML file 'GameBoardFXML.fxml'.";
+                
+        //initialize all the button action listener here or make a method and call it here
+        //btn55.setOnAction(myHandler);
+        
     }
     
     @FXML
@@ -196,8 +220,8 @@ public class GameBoardController{
     
     //Figure out how gameOver is gonna be called. and figure out how to close the board.
     void gameOver(){
-        gameOver = true;
-        if(gameOver == true){
+        //gameOver = true;
+        if(Integer.parseInt(cLeftLbl.getText()) == 0){
             try {
                 Stage stage = new Stage();
                 FXMLLoader loader = new FXMLLoader();
@@ -219,19 +243,65 @@ public class GameBoardController{
         }
     }
     
-    //Need to update at each round the scores, number of pebbles
-    //Need to check whose turn it is (white or black) to be able to put right color in imageview
-    
+    //Have to add handleClick method to all the buttons
     @FXML
     void handleClick(ActionEvent event){
-        Alert dialog = new Alert(Alert.AlertType.ERROR);
-        dialog.initModality(Modality.NONE);
-        dialog.setTitle("Test");
-        dialog.setHeaderText("There was an error connecting to the server.");
-        dialog.setContentText("The ip provided is not valid.");
-        dialog.show();
         
-        Image image = new Image(getClass().getResourceAsStream("/images/black.png"));
-        btn55.setGraphic(new ImageView(image));
+        if(validateMove()){
+            if(color.equals("black")){
+                Image black = new Image(getClass().getResourceAsStream("/images/black.png"));
+                btn55.setGraphic(new ImageView(black));
+                color = "white";
+            }
+            else if(color.equals("white")){
+                    Image white = new Image(getClass().getResourceAsStream("/images/white.png"));
+                    btn55.setGraphic(new ImageView(white));
+                    color = "black";
+            }
+        }
+    }
+    
+    /*EventHandler<ActionEvent> myHandler = new EventHandler<ActionEvent>(){
+        @Override
+        public void handle(final ActionEvent event) {
+          onClick();
+        }
+    };
+    
+    void onClick(){
+        if(color.equals("black")){
+            Image black = new Image(getClass().getResourceAsStream("/images/black.png"));
+            btn55.setGraphic(new ImageView(black));
+            color = "white";
+        }
+        else if(color.equals("white")){
+                Image white = new Image(getClass().getResourceAsStream("/images/white.png"));
+                btn55.setGraphic(new ImageView(white));
+                color = "black";
+        }
+    }*/
+    
+    //call this method after each move, so after each user click and each computer move
+    void updateGameBoardInfo(){
+        int score = 0;
+        int pebbles = 0;
+        pScoreLbl.setText(Integer.toString(score));
+        cScoreLbl.setText(Integer.toString(score));
+        
+        pLeftLbl.setText(Integer.toString(pebbles));
+        cLeftLbl.setText(Integer.toString(pebbles));
+    }
+    
+    boolean validateMove(){
+        int x = 1 , y = 2;
+        int xo = 1, yo = 2;
+        
+        if(x == xo){
+            if(y == yo){
+                return true;
+            }
+            return false;
+        }
+        return false;
     }
 }
