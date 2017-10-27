@@ -293,15 +293,22 @@ public class GameBoardController{
     }
     
     boolean validateMove(){
-        int x = 1 , y = 2;
-        int xo = 1, yo = 2;
+       
+        int previousX = 1, previousY = 3;
+        int playedX = 1, playedY = 3;
+        int leftX = 0, leftY = 0;
         
-        if(x == xo){
-            if(y == yo){
+        if(!(leftX == 0 && leftY == 0)){
+            if(previousX == playedX){
                 return true;
             }
-            return false;
+            if(previousY == playedY){
+                return true;
+            }
+            else{
+                return false;
+            }
         }
-        return false;
+        return true;
     }
 }
