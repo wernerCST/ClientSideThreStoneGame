@@ -54,7 +54,11 @@ public class MenuFXMLController {
     @FXML
     void handleNewGame(ActionEvent event) {
         System.out.println("-1-- handleNewGame");
-        byte[] response = con.connectToServer("10.172.15.30", 1);
+        int[] msg = new int[1];
+        msg[0] = 1;
+        con.connectToServer(msg);
+        con.serverRead();
+        byte[] response = con.getRes();
         System.out.println("-2-- handleNewGame");
         if(response[0] == 1){  
             System.out.println("-3-- handleNewGame");
@@ -90,7 +94,6 @@ public class MenuFXMLController {
 
     public void setConnectionObject(Connection con) {
         this.con = con;
-        if(con == null){System.out.println("menu fuck");}
     }
     
 }

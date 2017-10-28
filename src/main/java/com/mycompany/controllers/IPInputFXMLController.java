@@ -15,6 +15,7 @@ import java.util.ResourceBundle;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Pattern;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -47,7 +48,6 @@ public class IPInputFXMLController {
     private Connection con;
     public IPInputFXMLController(){
         super();
-        if(con == null){System.out.println("4 fuck");}
     }
     @FXML // This method is called by the FXMLLoader when initialization is complete
     void initialize() {
@@ -58,13 +58,27 @@ public class IPInputFXMLController {
     }
     
     @FXML
-    void handleInput(ActionEvent event) {
+    void handleInput(ActionEvent event)  {
         //should check if IP is valid or not
         String ip = IPTextField.getText();
+        Pattern pattern = Pattern.compile("\\d{1,3}+\\.\\d{1,3}+\\.\\d{1,3}+(\\.\\d{1,3}+)?");
+        if(!pattern.matcher(IPTextField.getText()).matches()) {
+            errorAlert("Sorry that is n0ot a valid ip");
+            return;
+        }
+        
+       try{
+           con.setIP(ip);
+       } catch (IOException ex) {
+           errorAlert(ex.getMessage());
+       }
         System.out.println("1.1");
         System.out.println(ip);
-        if(con == null){System.out.println("2 fuck");}
-        byte[] response = con.connectToServer(ip, 0);
+        int[] msg = new int[3];
+        msg[0] = 0;
+        con.connectToServer(msg);
+        con.serverRead();
+        byte[] response = con.getRes();
         
         if(response[0] == 1){                
             try {
@@ -83,7 +97,7 @@ public class IPInputFXMLController {
                 close.close();
                 
             } catch (IOException ex) {
-                Logger.getLogger(IPInputFXMLController.class.getName()).log(Level.SEVERE, null, ex);
+                errorAlert(ex.getMessage());
             }
         } else {
             errorAlert("Sorry please try again");
@@ -100,6 +114,5 @@ public class IPInputFXMLController {
 
     public void setConnectionObject(Connection con) {
         this.con = con;
-        if(con == null){System.out.println("0 fuck");}
     }
 }
