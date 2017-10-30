@@ -190,6 +190,7 @@ public class GameBoardController {
     
     private int t = 0;
     private Connection con;
+    private ThreeStonesBoard board;
     Image black;
     Image white;
     
@@ -199,10 +200,12 @@ public class GameBoardController {
         super();
         black = new Image("images/black.png");
         white = new Image("images/white.png");
+        board = new ThreeStonesBoard();
     }
 
     @FXML // This method is called by the FXMLLoader when initialization is complete
     void initialize() { 
+        setButtonsOnBoard();
     }
     public void setConnectionObject(Connection con) {
             this.con = con;
@@ -254,6 +257,54 @@ public class GameBoardController {
             return false;
         }
         return false;
-        }
+    }
+    private void setButtonsOnBoard() {
+        //row 1, has 3 tiles.
+        board.setStoneAt(btn42, 2, 4);
+        board.setStoneAt(btn42, 2, 5);
+        board.setStoneAt(btn42, 2, 5);
+        //row 2, has 5 tiles.
+        board.setStoneAt(btn42, 3, 3);
+        board.setStoneAt(btn42, 3, 4);
+        board.setStoneAt(btn42, 3, 5);
+        board.setStoneAt(btn42, 3, 6);
+        board.setStoneAt(btn42, 3, 7);
+        //row 3, has 7 tiles
+        board.setStoneAt(btn42, 4, 2);
+        board.setStoneAt(btn42, 4, 3);
+        board.setStoneAt(btn42, 4, 4);
+        board.setStoneAt(btn42, 4, 5);
+        board.setStoneAt(btn42, 4, 6);
+        board.setStoneAt(btn42, 4, 7);
+        board.setStoneAt(btn42, 4, 8);
+        //row 4, has 7 tiles
+        board.setStoneAt(btn42, 5, 2);
+        board.setStoneAt(btn42, 5, 3);
+        board.setStoneAt(btn42, 5, 4);
+        // center at 5,5
+        board.setStoneAt(btn42, 5, 6);
+        board.setStoneAt(btn42, 5, 7);
+        board.setStoneAt(btn42, 5, 8);
+        //row 5, has 7 tiles
+        board.setStoneAt(btn42, 6, 2);
+        board.setStoneAt(btn42, 6, 3);
+        board.setStoneAt(btn42, 6, 4);
+        board.setStoneAt(btn42, 6, 5);
+        board.setStoneAt(btn42, 6, 6);
+        board.setStoneAt(btn42, 6, 7);
+        board.setStoneAt(btn42, 6, 8);
+        //row 6, has 5 tiles.
+        board.setStoneAt(btn42, 7, 3);
+        board.setStoneAt(btn42, 7, 4);
+        board.setStoneAt(btn42, 7, 5);
+        board.setStoneAt(btn42, 7, 6);
+        board.setStoneAt(btn42, 7, 7);
+        //row 7, has 3 tiles.
+        board.setStoneAt(btn42, 8, 4);
+        board.setStoneAt(btn42, 8, 5);
+        board.setStoneAt(btn42, 8, 6);
+        
+        
+    }
     
 }
