@@ -53,15 +53,6 @@ public class MenuFXMLController {
 
     @FXML
     void handleNewGame(ActionEvent event) {
-        System.out.println("-1-- handleNewGame");
-        int[] msg = new int[1];
-        msg[0] = 1;
-        con.connectToServer(msg);
-        con.serverRead();
-        byte[] response = con.getRes();
-        System.out.println("-2-- handleNewGame");
-        if(response[0] == 1){  
-            System.out.println("-3-- handleNewGame");
         try {
             Stage primaryStage = new Stage();
             FXMLLoader loader = new FXMLLoader();               
@@ -79,9 +70,6 @@ public class MenuFXMLController {
                 
         } catch (IOException ex) {
             errorAlert(ex.getMessage());
-        }
-        } else {
-            errorAlert("Sorry please try again");
         }
     }
     private void errorAlert(String msg) {
