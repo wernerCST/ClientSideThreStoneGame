@@ -1,7 +1,3 @@
-/**
- * Sample Skeleton for 'GameBoardFXML.fxml' Controller Class
- */
-
 package com.mycompany.controllers;
 
 import com.mycompany.clientside.connection.Connection;
@@ -18,6 +14,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -156,20 +153,43 @@ public class GameBoardController {
 
     @FXML // fx:id="exitBtn"
     private Button exitBtn; // Value injected by FXMLLoader
-
+    /**
+     * when the exit button is clicked the socket is closed and the window
+     * is closed as well and the IPInputFXMLController is lunched.
+     * @param event 
+     */
     @FXML
     void handleExit(ActionEvent event) {
-        int[] msg = new int[1];
-        msg[0] = 4;
-        con.connectToServer(msg);
-        Stage close = (Stage) exitBtn.getScene().getWindow();
-        close.close();
-        con = null;
-        showIpWindo();      
+        try {
+            int[] msg = new int[1];
+            msg[0] = 4;
+            con.connectToServer(msg);
+            Stage close = (Stage) exitBtn.getScene().getWindow();
+            close.close();
+            con.closeSocket();      
+            showIpWindo();
+        } catch (IOException ex) {
+            errorAlert(ex.getMessage());
+        }
     }
-    private int previousX, previousY, playedX, playedY, leftX, leftY;
+    private int previousX, previousY, playedX, playedY, leftX, leftY, counter;
+    /**
+     * Handles the sending of the selected index (x,y) the user
+     * has clicked on, disables the button in the process. Gets
+     * and places the server response, that includes the servers move, scores, 
+     * stones and if there was a winner.
+     * @param e 
+     */
     public void onPlayerMove(ActionEvent e){
         String[] xy = board.getIndexOfStone((Button)e.getSource()).split(",");
+        if(counter == 0) {
+            previousX =  Integer.parseInt(xy[0]);
+            previousY = Integer.parseInt(xy[1]);
+        } else {
+            //is the next x == to old x or old y == to new y
+            //validateMove();
+        }
+        
         int[] msg = new int[3];
                 msg[0] = 2;
                 msg[1] = Integer.parseInt(xy[0]);
@@ -194,10 +214,22 @@ public class GameBoardController {
             
             
             if(response[0] == 4){
-                lunchGameOverPage(e, board.getStoneAt(response[1], response[2]));
+                if(response[3] > response[4]) {
+                    //player won
+                    lunchGameOverPage(e, board.getStoneAt(response[1], 
+                            response[2]), response[3], response[4], "You won congrats!!");
+                } else {
+                    //ai won
+                    lunchGameOverPage(e, board.getStoneAt(response[1], 
+                            response[2]), response[3], response[4], "You lost, please play again");
+                }
+                
             }
         }
-       }          
+       }   
+       previousX = playedX;
+       previousY = playedY;
+        counter++;       
     }
     private void showIpWindo() {
         try {
@@ -212,7 +244,8 @@ public class GameBoardController {
             Logger.getLogger(GameBoardController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    private void lunchGameOverPage(ActionEvent e, Button btn) {
+    private void lunchGameOverPage(ActionEvent e, Button btn, int player, 
+                                        int ai, String msg) {
         try {
             Stage primaryStage = new Stage();
             FXMLLoader loader = new FXMLLoader();
@@ -221,7 +254,7 @@ public class GameBoardController {
             Scene scene = new Scene(rootPane);
             primaryStage.setScene(scene);
             GameOverFXMLController gameover = loader.getController();
-            gameover.setConnectionObject(con);
+            gameover.setContext(con, player, ai, msg);
             
             primaryStage.show();
             Stage close = (Stage) btn.getScene().getWindow();
@@ -244,6 +277,13 @@ public class GameBoardController {
         black = new Image("images/black.png");
         white = new Image("images/white.png");
         board = new ThreeStonesBoard();
+        previousX = 0;
+        previousY = 0;
+        playedX = 0;
+        playedY = 0; 
+        leftX = 0; 
+        leftY = 0; 
+        counter = 0;
     }
 
     @FXML // This method is called by the FXMLLoader when initialization is complete
@@ -278,18 +318,10 @@ public class GameBoardController {
         }
     }
     
-    //call this method after each move, so after each user click and each computer move
-    void updateGameBoardInfo(){
-        int score = 0;
-        int pebbles = 0;
-        pScoreLbl.setText(Integer.toString(score));
-        cScoreLbl.setText(Integer.toString(score));
-        
-        pLeftLbl.setText(Integer.toString(pebbles));
-        cLeftLbl.setText(Integer.toString(pebbles));
-    }
-    
-    
+    /**
+     * Helper method for user move validation.
+     * @return 
+     */
     boolean validateMove(){            
         if(!(leftX == 0 && leftY == 0)){
             if(previousX == playedX){
@@ -304,6 +336,11 @@ public class GameBoardController {
         }
         return true;
     }
+    /**
+     * Helper method that sets the two dimantional Button array
+     * in the ThreeStonesBoard bean to the there corresponding buttons
+     * on the board (on the window).
+     */
     private void setButtonsOnBoard() {
         //row 1, has 3 tiles.
         board.setStoneAt(btn42, 2, 4);
@@ -351,6 +388,18 @@ public class GameBoardController {
         board.setStoneAt(btn68, 8, 6);       
         
     }   
+    /**
+     * Helper method to display a dialog box with a given message
+     * being passed in.
+     * @param msg 
+     */
+    private void errorAlert(String msg) {
+        Alert dialog = new Alert(Alert.AlertType.ERROR);
+        dialog.setTitle("Error");
+        dialog.setHeaderText("Error");
+        dialog.setContentText(msg);
+        dialog.show();
+    } 
     
     
 }

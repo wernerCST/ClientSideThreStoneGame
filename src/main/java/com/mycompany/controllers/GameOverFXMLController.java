@@ -17,6 +17,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
@@ -30,6 +31,10 @@ public class GameOverFXMLController {
 
     @FXML // URL location of the FXML file that was given to the FXMLLoader
     private URL location;
+    
+    @FXML
+    private Label winLoseMsgLable;
+
 
     @FXML // fx:id="playAgainButton"
     private Button playAgainBtn; // Value injected by FXMLLoader
@@ -43,29 +48,42 @@ public class GameOverFXMLController {
     @FXML // fx:id="scoreComputerLabel"
     private Label scoreComputerLabel; // Value injected by FXMLLoader
     private Connection con;
+    private String msg;
+    private int playerScore, aiScore;
     public GameOverFXMLController(){
         super();
+        msg = "";
+        playerScore = 0;
+        aiScore = 0;
     }
 
     @FXML // This method is called by the FXMLLoader when initialization is complete
-    void initialize() {
-        assert playAgainBtn != null : "fx:id=\"playAgainButton\" was not injected: check your FXML file 'GameOverFXML.fxml'.";
-        assert exitBtn != null : "fx:id=\"exitBtn\" was not injected: check your FXML file 'GameOverFXML.fxml'.";
-        assert scorePlayerLabel != null : "fx:id=\"scorePlayerLabel\" was not injected: check your FXML file 'GameOverFXML.fxml'.";
-        assert scoreComputerLabel != null : "fx:id=\"scoreComputerLabel\" was not injected: check your FXML file 'GameOverFXML.fxml'.";
-
+    void initialize() {        
+        
     }
-    
+    /**
+     * When the exit button is clicked this handler will send a message 
+     * to the server that the user has left. It also closes the socket
+     * and will lunch the IPInputFXML view.
+     * @param event 
+     */
     @FXML
     void handleExit(ActionEvent event) {
-         int[] msg = new int[1];
-        msg[0] = 4;
-        con.connectToServer(msg);
-        Stage close = (Stage) exitBtn.getScene().getWindow();
-        close.close();
-        con = null;
-        showIpWindo(); 
+        try {
+            int[] msg = new int[1];
+            msg[0] = 4;
+            con.connectToServer(msg);
+            Stage close = (Stage) exitBtn.getScene().getWindow();
+            close.close();
+            con.closeSocket(); 
+            showIpWindo();
+        } catch (IOException ex) {
+            errorAlert(ex.getMessage());
+        }
     }
+    /**
+     * Helper method that handles the call to open the IPInputFXML view.
+     */
      private void showIpWindo() {
         try {
             Stage primaryStage = new Stage();
@@ -76,13 +94,19 @@ public class GameOverFXMLController {
             primaryStage.setScene(scene);            
             primaryStage.show();
         } catch (IOException ex) {
-            Logger.getLogger(GameBoardController.class.getName()).log(Level.SEVERE, null, ex);
+            errorAlert(ex.getMessage());
         }
     }
 
-    //Needs to put the final scores and who won/lost
+   
+     /**
+      * Lunches the GameBoardFXML view and restarts the game from scratch,
+      * it also sends a request to the server to restart the game on the server side
+      * as well.
+      * @param event 
+      */
     @FXML
-    void handlePlayAgain(ActionEvent event) {
+    void playAgain(ActionEvent event) {
         try {
             int[] msg = new int[1];
                 msg[0] = 3;
@@ -108,11 +132,32 @@ public class GameOverFXMLController {
              }
           }                
             } catch (IOException ex) {
-                Logger.getLogger(IPInputFXMLController.class.getName()).log(Level.SEVERE, null, ex);
+                errorAlert(ex.getMessage());
             }
     }
-
-    void setConnectionObject(Connection con) {
+    /**
+     * Setter to obtain the reference of the Connection bean.
+     * @param con 
+     */
+    void setContext(Connection con, int player, int ai, String msg) {
         this.con = con;
+        this.msg = msg;
+        this.playerScore = player;
+        this.aiScore = ai;
+        scorePlayerLabel.setText(" " + this.playerScore);
+        scoreComputerLabel.setText(" " + this.aiScore);
+        winLoseMsgLable.setText(msg);
     }
+    /**
+     * Helper method to display a dialog box with a given message
+     * being passed in.
+     * @param msg 
+     */
+    private void errorAlert(String msg) {
+        Alert dialog = new Alert(Alert.AlertType.ERROR);
+        dialog.setTitle("Error");
+        dialog.setHeaderText("Error");
+        dialog.setContentText(msg);
+        dialog.show();
+    } 
 }

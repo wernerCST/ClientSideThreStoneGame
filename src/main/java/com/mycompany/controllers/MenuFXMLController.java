@@ -48,17 +48,28 @@ public class MenuFXMLController {
         assert newGameBtn != null : "fx:id=\"newGameBtn\" was not injected: check your FXML file 'MenuFXML.fxml'.";
         assert exitBtn != null : "fx:id=\"exitBtn\" was not injected: check your FXML file 'MenuFXML.fxml'.";
     }
-    
+    /**
+     * when the exit button is clicked the socket is closed and the window
+     * is closed as well and the IPInputFXMLController is lunched.
+     * @param event 
+     */
     @FXML
     void handleExit(ActionEvent event) {
-        int[] msg = new int[1];
-        msg[0] = 4;
-        con.connectToServer(msg);
-        Stage close = (Stage) exitBtn.getScene().getWindow();
-        close.close();
-        con = null;
-        showIpWindo(); 
+        try {
+            int[] msg = new int[1];
+            msg[0] = 4;
+            con.connectToServer(msg);
+            Stage close = (Stage) exitBtn.getScene().getWindow();
+            close.close();
+            con.closeSocket(); 
+            showIpWindo();
+        } catch (IOException ex) {
+            errorAlert(ex.getMessage());
+        }
     }
+    /**
+     * Helper method that handles the call to lunch the IPInputFXML.
+     */
      private void showIpWindo() {
         try {
             Stage primaryStage = new Stage();
@@ -72,18 +83,18 @@ public class MenuFXMLController {
             Logger.getLogger(GameBoardController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+     /**
+      * Even handler for when the user decides to play the game.
+      * @param event 
+      */
     @FXML
     void handleNewGame(ActionEvent event) {
-        System.out.println("-1-- handleNewGame");
         int[] msg = new int[1];
         msg[0] = 1;
         con.connectToServer(msg);
         con.serverRead();
         byte[] response = con.getRes();
-        System.out.println("-2-- handleNewGame");
         if(response[0] == 1){  
-            System.out.println("-3-- handleNewGame");
         try {
             Stage primaryStage = new Stage();
             FXMLLoader loader = new FXMLLoader();               
@@ -106,14 +117,22 @@ public class MenuFXMLController {
             errorAlert("Sorry please try again");
         }
     }
+    /**
+     * Helper method to display a dialog box with a given message
+     * being passed in.
+     * @param msg 
+     */
     private void errorAlert(String msg) {
         Alert dialog = new Alert(Alert.AlertType.ERROR);
         dialog.setTitle("Error");
-        dialog.setHeaderText("!!");
+        dialog.setHeaderText("Error");
         dialog.setContentText(msg);
         dialog.show();
     } 
-
+    /**
+     * setter to get the reference of the Connection bean.
+     * @param con 
+     */
     public void setConnectionObject(Connection con) {
         this.con = con;
     }

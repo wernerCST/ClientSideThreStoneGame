@@ -90,9 +90,9 @@
             <Label layoutX="505.0" layoutY="98.0" text="Pebbles left:" />
             <Label layoutX="310.0" layoutY="6.0" text="3 Stones Game" />
             <Label fx:id="pScoreLbl" layoutX="155.0" layoutY="62.0" text="0" />
-            <Label fx:id="pLeftLbl" layoutX="234.0" layoutY="90.0" text="0" />
+            <Label fx:id="pLeftLbl" layoutX="250.0" layoutY="90.0" text="0" />
             <Label fx:id="cScoreLbl" layoutX="532.0" layoutY="62.0" text="0" />
-            <Label fx:id="cLeftLbl" layoutX="573.0" layoutY="99.0" text="0" />
+            <Label fx:id="cLeftLbl" layoutX="600.0" layoutY="99.0" text="0" />
          </children>
       </AnchorPane>
    </top>

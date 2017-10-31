@@ -7,14 +7,14 @@
 
 <AnchorPane id="AnchorPane" prefHeight="300.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.controllers.GameOverFXMLController">
    <children>
-      <Button fx:id="playAgainBtn" layoutX="85.0" layoutY="226.0" mnemonicParsing="false" onAction="#handlePlayAgain" prefHeight="30.0" prefWidth="100.0" text="Play Again" />
+      <Button fx:id="playAgainBtn" layoutX="85.0" layoutY="226.0" mnemonicParsing="false" onAction="#playAgain" prefHeight="30.0" prefWidth="100.0" text="Play Again" />
       <Button fx:id="exitBtn" layoutX="329.0" layoutY="226.0" mnemonicParsing="false" onAction="#handleExit" prefHeight="30.0" prefWidth="100.0" text="Exit" />
       <Label layoutX="210.0" layoutY="20.0" text="Game Over">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <Label layoutX="219.0" layoutY="55.0" text="[You won]">
+      <Label fx:id="winLoseMsgLable" layoutX="200.0" layoutY="55.0" text="[You won]">
          <font>
             <Font size="14.0" />
          </font>

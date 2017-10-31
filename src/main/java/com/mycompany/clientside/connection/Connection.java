@@ -98,4 +98,11 @@ public class Connection {
       public void setIP(String ip) throws IOException {
           this.sk = new Socket(ip, port);
       }
+      /**
+       * close the socket.
+       * @throws IOException 
+       */
+      public void closeSocket() throws IOException {
+          this.sk.close();
+      }
 }
