@@ -44,13 +44,10 @@ public class MenuFXMLController {
     }
     
     @FXML
-    void initialize() {
-        assert newGameBtn != null : "fx:id=\"newGameBtn\" was not injected: check your FXML file 'MenuFXML.fxml'.";
-        assert exitBtn != null : "fx:id=\"exitBtn\" was not injected: check your FXML file 'MenuFXML.fxml'.";
-    }
+    void initialize() {  }
     /**
      * when the exit button is clicked the socket is closed and the window
-     * is closed as well and the IPInputFXMLController is lunched.
+     * is closed as well and the IPInputFXMLController is launched.
      * @param event 
      */
     @FXML
@@ -68,7 +65,7 @@ public class MenuFXMLController {
         }
     }
     /**
-     * Helper method that handles the call to lunch the IPInputFXML.
+     * Helper method that handles the call to launch the IPInputFXML.
      */
      private void showIpWindo() {
         try {

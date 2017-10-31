@@ -40,7 +40,7 @@ public class ThreeStonesBoard {
     }
     
     /**
-     * Retrieves the value of a Stone on the board at the given coordinates,
+     * Retrieves a button on the board given an x and y index at the given coordinates,
      * it returns a x and y index in string format coma separated.
      * 
      * @param x The x-coordinate of the Stone to find.
@@ -51,7 +51,8 @@ public class ThreeStonesBoard {
         return board[x][y];
     }
     /**
-     * 
+     * Returns the x and y index of a given button in a 
+     * coma separated string.
      * @param item
      * @return 
      */
@@ -65,8 +66,7 @@ public class ThreeStonesBoard {
                 }
             }
             
-        }       
-        
+        }     
         return res;
     }
 }

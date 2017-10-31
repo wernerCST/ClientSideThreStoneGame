@@ -4,13 +4,7 @@
  * and open the template in the editor.
  */
 package com.mycompany.stones;
-
-import com.mycompany.clientside.connection.Connection;
-import com.mycompany.clientside.connection.Connection;
-import com.mycompany.controllers.IPInputFXMLController;
 import java.io.IOException;
-import java.sql.SQLException;
-import java.util.ResourceBundle;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.fxml.FXMLLoader;
@@ -18,10 +12,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 /**
- *
+ * This class when run will lunch the application it 
+ * launches the IPInputFXML view.
  * @author 1511430
  */
 
@@ -42,7 +36,7 @@ public class MainApp extends Application {
         initRootLayout();
         primaryStage.show(); 
     }
-        public void initRootLayout() {
+    public void initRootLayout() {
         try {
             // Instantiate a FXMLLoader object
             FXMLLoader loader = new FXMLLoader();

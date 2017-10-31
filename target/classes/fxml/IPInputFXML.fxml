@@ -9,7 +9,7 @@
 <AnchorPane id="AnchorPane" prefHeight="300.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.controllers.IPInputFXMLController">
    <children>
       <Button fx:id="inputBtn" layoutX="325.0" layoutY="150.0" mnemonicParsing="false" onAction="#handleInput" text="Input" />
-      <Label layoutX="128.0" layoutY="96.0" text="Server IP">
+      <Label layoutX="128.0" layoutY="96.0" text="Three Stone Game">
          <font>
             <Font size="14.0" />
          </font>

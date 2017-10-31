@@ -1,17 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.mycompany.clientside.connection;
 
 import java.io.IOException;
 import java.io.*;
 import java.net.*;
-import java.util.Arrays;
-import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import javafx.scene.control.Alert;
 
 /**
  * This class handles the connection between the client and 
@@ -21,7 +13,6 @@ import java.util.logging.Logger;
 public class Connection {
     
     private int port;
-    private String server;
     private static int BUFSIZE;
     private Socket sk;
     private byte[] res;
@@ -39,32 +30,30 @@ public class Connection {
      * @param userMsg 
      */
     public boolean connectToServer(int[] userMsg) {
-        System.out.println("1.2");
+        boolean valid = true;
         int msgSize;
         byte[] res = new byte[BUFSIZE];
         res[0] = 0;
         byte[] serverMsg = new byte[BUFSIZE];
-        try {
-            System.out.println("1.3");            
+        try {        
             OutputStream out = sk.getOutputStream();
-            System.out.println("1.4");
             byte[] msg = new byte[BUFSIZE];
             for (int i = 0; i < userMsg.length; i++) {
                 msg[i] = (byte)userMsg[i];
-                System.out.println(i + ": " +  msg[i]);
             }
             out.write(msg);                
         } catch (IOException ex) {
-            System.out.println("something went bad " + ex.getMessage());
+            valid = false;
+            errorAlert(ex.getMessage());
         } 
-        return true;
+        return valid;
     }    
     /**
      * Gets the InputStream being received from the server.
      * @return 
      */
     public boolean serverRead() {
-        System.out.println("1.2");
+        boolean valid = true;
         int msgSize;
         this.res = new byte[BUFSIZE];
         res[0] = 0;
@@ -73,17 +62,15 @@ public class Connection {
             InputStream in =  sk.getInputStream();
             int i = 0;
             while((msgSize = in.read(serverMsg)) != -1) {
-                System.out.println("server said --->  " + Arrays.toString(serverMsg));
                 this.res = serverMsg; 
-                System.out.println("res --->  " + Arrays.toString(res));
                 break;
-            }
-            System.out.println("no close()");                 
+            }                
         } catch (IOException ex) {
-            System.out.println("something went bad " + ex.getMessage());
+            valid =  false;
+            errorAlert(ex.getMessage());            
         }
         
-        return true;
+        return valid;
     } 
     public byte[] getRes() {
         return this.res;
@@ -105,4 +92,16 @@ public class Connection {
       public void closeSocket() throws IOException {
           this.sk.close();
       }
+     /**
+     * Helper method to display a dialog box with a given message
+     * being passed in.
+     * @param msg 
+     */
+     private void errorAlert(String msg) {
+        Alert dialog = new Alert(Alert.AlertType.ERROR);
+        dialog.setTitle("Error");
+        dialog.setHeaderText("Error");
+        dialog.setContentText(msg);
+        dialog.show();
+    } 
 }

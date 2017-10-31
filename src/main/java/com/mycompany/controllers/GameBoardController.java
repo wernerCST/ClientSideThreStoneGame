@@ -20,6 +20,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
@@ -155,7 +156,7 @@ public class GameBoardController {
     private Button exitBtn; // Value injected by FXMLLoader
     /**
      * when the exit button is clicked the socket is closed and the window
-     * is closed as well and the IPInputFXMLController is lunched.
+     * is closed as well and the IPInputFXMLController is launched.
      * @param event 
      */
     @FXML
@@ -181,14 +182,13 @@ public class GameBoardController {
      * @param e 
      */
     public void onPlayerMove(ActionEvent e){
-        System.out.println("player played----");
         String[] xy = board.getIndexOfStone((Button)e.getSource()).split(",");
         if(counter == 0) {
             playedX = Integer.parseInt(xy[0]);
-            playedY =  Integer.parseInt(xy[1]);            
+            playedY =  Integer.parseInt(xy[1]);    
         } else {
-            System.out.println("playedX: " + playedX + " playedY: " + playedY + " previousX: " +
-                    previousX + " previousY: " + previousY + " leftX: " + leftX + " leftY: " + leftY);
+            playedX = Integer.parseInt(xy[0]);
+            playedY =  Integer.parseInt(xy[1]);  
             determineSlotsLeftXY(xy);
             if(!validateMove()) {
                 errorAlert("Invalid move plases try again.");
@@ -209,9 +209,12 @@ public class GameBoardController {
        if(con.connectToServer(msg)) {
         if(con.serverRead()) {
             byte[] response = con.getRes();
-            board.getStoneAt(response[1], response[2]).setGraphic(new ImageView(black)); 
+            board.getStoneAt(response[1], response[2]).setGraphic(new ImageView(black));
+            board.getStoneAt(response[1], response[2]).setStyle("-fx-border-color: #f00; -fx-border-width: 2px;");
+            if(counter > 0) {
+              board.getStoneAt(previousX, previousY).setStyle("-fx-border-color: none; -fx-border-width: 0px;");
+            }
             board.getStoneAt(response[1], response[2]).setDisable(true);
-            System.out.println("\t--->>" + Arrays.toString(response));
             
             pScoreLbl.setText("" + response[3]);
             cScoreLbl.setText("" + response[4]);            
@@ -222,11 +225,11 @@ public class GameBoardController {
             if(response[0] == 4){
                 if(response[3] > response[4]) {
                     //player won
-                    lunchGameOverPage(e, board.getStoneAt(response[1], 
+                    launchGameOverPage(e, board.getStoneAt(response[1], 
                             response[2]), response[3], response[4], "You won congrats!!");
                 } else {
                     //ai won
-                    lunchGameOverPage(e, board.getStoneAt(response[1], 
+                    launchGameOverPage(e, board.getStoneAt(response[1], 
                             response[2]), response[3], response[4], "You lost, please play again");
                 }
                 
@@ -250,10 +253,19 @@ public class GameBoardController {
             primaryStage.setScene(scene);            
             primaryStage.show();
         } catch (IOException ex) {
-            Logger.getLogger(GameBoardController.class.getName()).log(Level.SEVERE, null, ex);
+            errorAlert(ex.getMessage());
         }
     }
-    private void lunchGameOverPage(ActionEvent e, Button btn, int player, 
+    /**
+     * Launches the GameOverFXML and will set the scores as well as the string
+     * message with the result of who won the game.
+     * @param e
+     * @param btn
+     * @param player
+     * @param ai
+     * @param msg 
+     */
+    private void launchGameOverPage(ActionEvent e, Button btn, int player, 
                                         int ai, String msg) {
         try {
             Stage primaryStage = new Stage();
@@ -269,13 +281,13 @@ public class GameBoardController {
             Stage close = (Stage) btn.getScene().getWindow();
             close.close();
         } catch (IOException ex) {
-            Logger.getLogger(GameBoardController.class.getName()).log(Level.SEVERE, null, ex);
+            errorAlert(ex.getMessage());
         }
     }
     
-    private int t = 0;
+   
     private Connection con;
-    private ThreeStonesBoard board;
+    private final ThreeStonesBoard board;
     Image black;
     Image white;
     
@@ -299,34 +311,14 @@ public class GameBoardController {
     void initialize() { 
         setButtonsOnBoard();
     }
+    /**
+     * Sets the local Connection bean to the same reference as set in 
+     * previous views.
+     * @param con 
+     */
     public void setConnectionObject(Connection con) {
             this.con = con;
-    }
-    
-    public void gameOver(){
-        //gameOver = true;
-        if(Integer.parseInt(cLeftLbl.getText()) == 0){
-            try {
-                Stage stage = new Stage();
-                FXMLLoader loader = new FXMLLoader();
-                
-                loader.setLocation(MainApp.class.getResource("/fxml/GameOverFXML.fxml"));
-                
-                Parent parent = (AnchorPane) loader.load();
-                Scene scene = new Scene(parent);
-                stage.setScene(scene);
-                
-                stage.show();
-                
-                //Stage close = (Stage) newGameBtn.getScene().getWindow();
-                //close.close();
-                
-            } catch (IOException ex) {
-                Logger.getLogger(IPInputFXMLController.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-    }
-    
+    }    
     /**
      * Helper method for user move validation.
      * @return 
@@ -344,6 +336,23 @@ public class GameBoardController {
             }
         }
         return true;
+    }
+    /**
+     * Determines if the button clicked by the user (x,y) is a
+     * valid one, that meets the standards of the rules of the game.
+     * @param xy 
+     */
+    private void determineSlotsLeftXY(String[] xy) {
+        boolean validClick = false;
+        for (int i = 0; i < 11; i++) {
+            if (!board.getStoneAt(Integer.parseInt(xy[1]), i).isDisable()) {
+                leftY++;
+                validClick = true;
+            } else if(!board.getStoneAt(i, Integer.parseInt(xy[0])).isDisable()){                    
+                leftX++;
+                validClick = true;
+            }
+        }
     }
     /**
      * Helper method that sets the two dimantional Button array
@@ -397,6 +406,7 @@ public class GameBoardController {
         board.setStoneAt(btn68, 8, 6);       
         
     }   
+    
     /**
      * Helper method to display a dialog box with a given message
      * being passed in.
@@ -408,24 +418,7 @@ public class GameBoardController {
         dialog.setHeaderText("Error");
         dialog.setContentText(msg);
         dialog.show();
-    } 
-
-    private void determineSlotsLeftXY(String[] xy) {
-            boolean validClick = false;
-        
-            for (int i = 0; i < 11; i++) {
-                if (!board.getStoneAt(Integer.parseInt(xy[1]), i).isDisable()) {
-                    leftY++;
-                    validClick = true;
-                } else if(!board.getStoneAt(i, Integer.parseInt(xy[0])).isDisable()){                    
-                    leftX++;
-                    validClick = true;
-                }
-            }
-            
-            if(validClick)
-                errorAlert("Invalid move plases try again.");
-    }
+    }   
     
     
 }

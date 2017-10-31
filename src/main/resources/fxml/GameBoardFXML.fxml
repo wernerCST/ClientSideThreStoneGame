@@ -64,7 +64,7 @@
             <Button fx:id="btn26" mnemonicParsing="false" onAction="#onPlayerMove" prefHeight="45.0" prefWidth="45.0" GridPane.columnIndex="2" GridPane.rowIndex="6" />
             <Button fx:id="btn36" mnemonicParsing="false" onAction="#onPlayerMove" prefHeight="45.0" prefWidth="45.0" GridPane.columnIndex="3" GridPane.rowIndex="6" />
             <Button fx:id="btn46" mnemonicParsing="false" onAction="#onPlayerMove" prefHeight="45.0" prefWidth="45.0" GridPane.columnIndex="4" GridPane.rowIndex="6" />
-            <Button fx:id="btn56" mnemonicParsing="false" prefHeight="45.0" prefWidth="45.0" GridPane.columnIndex="5" GridPane.rowIndex="6" />
+            <Button fx:id="btn56" mnemonicParsing="false" onAction="#onPlayerMove" prefHeight="45.0" prefWidth="45.0" GridPane.columnIndex="5" GridPane.rowIndex="6" />
             <Button fx:id="btn66" mnemonicParsing="false" onAction="#onPlayerMove" prefHeight="45.0" prefWidth="45.0" GridPane.columnIndex="6" GridPane.rowIndex="6" />
             <Button fx:id="btn76" mnemonicParsing="false" onAction="#onPlayerMove" prefHeight="45.0" prefWidth="45.0" GridPane.columnIndex="7" GridPane.rowIndex="6" />
             <Button fx:id="btn86" mnemonicParsing="false" onAction="#onPlayerMove" prefHeight="45.0" prefWidth="45.0" GridPane.columnIndex="8" GridPane.rowIndex="6" />

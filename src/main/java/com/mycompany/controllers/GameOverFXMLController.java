@@ -64,7 +64,7 @@ public class GameOverFXMLController {
     /**
      * When the exit button is clicked this handler will send a message 
      * to the server that the user has left. It also closes the socket
-     * and will lunch the IPInputFXML view.
+     * and will launch the IPInputFXML view.
      * @param event 
      */
     @FXML
@@ -100,7 +100,7 @@ public class GameOverFXMLController {
 
    
      /**
-      * Lunches the GameBoardFXML view and restarts the game from scratch,
+      * Launches the GameBoardFXML view and restarts the game from scratch,
       * it also sends a request to the server to restart the game on the server side
       * as well.
       * @param event 

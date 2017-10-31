@@ -51,16 +51,15 @@ public class IPInputFXMLController {
         con = new Connection();
     }
     @FXML // This method is called by the FXMLLoader when initialization is complete
-    void initialize() {
-        assert inputBtn != null : "fx:id=\"inputBtn\" was not injected: check your FXML file 'IPInputFXML.fxml'.";
-        assert IPLabel != null : "fx:id=\"IPLabel\" was not injected: check your FXML file 'IPInputFXML.fxml'.";
-        assert IPTextField != null : "fx:id=\"IPTextField\" was not injected: check your FXML file 'IPInputFXML.fxml'.";
-        IPLabel.setText("10.172.15.30");
-    }
-    
+    void initialize() { }
+    /**
+     * Launches the the MenuFXML view if the IP is valid and if the server
+     * response with (0) indicating that a new session has been created.
+     * @param event 
+     */
     @FXML
     void handleInput(ActionEvent event)  {
-        //should check if IP is valid or not
+        //check if IP is valid or not
         String ip = IPTextField.getText();
         Pattern pattern = Pattern.compile("\\d{1,3}+\\.\\d{1,3}+\\.\\d{1,3}+(\\.\\d{1,3}+)?");
         if(!pattern.matcher(IPTextField.getText()).matches()) {
@@ -73,8 +72,6 @@ public class IPInputFXMLController {
        } catch (IOException ex) {
            errorAlert(ex.getMessage());
        }
-        System.out.println("1.1");
-        System.out.println(ip);
         int[] msg = new int[3];
         msg[0] = 0;
         con.connectToServer(msg);
@@ -104,6 +101,11 @@ public class IPInputFXMLController {
             errorAlert("Sorry please try again");
         }
     }
+    /**
+     * Helper method to display a dialog box with a given message
+     * being passed in.
+     * @param msg 
+     */
     private void errorAlert(String msg) {
         Alert dialog = new Alert(Alert.AlertType.ERROR);
         dialog.setTitle("Error");
