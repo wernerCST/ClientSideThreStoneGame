@@ -5,6 +5,7 @@
  */
 package com.mycompany.controllers;
 
+import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 
 /**
@@ -13,13 +14,18 @@ import javafx.scene.image.ImageView;
  */
 public class ThreeStonesBoard {
     //represent board with 2-dimensional array
-    private ImageView[][] board;
+    private Button[][] board;
     
     /**
      * Default constructor for a ThreeStonesBoard object.
      */
     public ThreeStonesBoard() {
-        this.board = new ImageView[11][11];
+        this.board = new Button[11][11];
+        for (int i = 0; i < 11; i++) {
+            for (int j = 0; j < 11; j++) {
+                board[i][j] = new Button();
+            }
+        }
     }
     
     /**
@@ -29,7 +35,7 @@ public class ThreeStonesBoard {
      * @param x The x-coordinate of the placement location.
      * @param y The y-coordinate of the placement location.
      */
-    public void setStoneAt(ImageView stone, int x, int y) {
+    public void setStoneAt(Button stone, int x, int y) {
         board[x][y] = stone;
     }
     
@@ -40,10 +46,10 @@ public class ThreeStonesBoard {
      * @param y The y-coordinate of the Stone to find.
      * @return  The Stone at the given coordinates.
      */
-    public ImageView getStoneAt(int x, int y) {
+    public Button getStoneAt(int x, int y) {
         return board[x][y];
     }
-    public String getIndexOfStone(ImageView item) {
+    public String getIndexOfStone(Button item) {
         String res = "";
         for (int i = 0; i < board.length; i++) {
             
@@ -53,8 +59,7 @@ public class ThreeStonesBoard {
                 }
             }
             
-        }
-        
+        }       
         
         return res;
     }

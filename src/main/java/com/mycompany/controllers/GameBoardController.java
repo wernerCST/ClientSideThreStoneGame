@@ -157,39 +157,29 @@ public class GameBoardController {
 
     @FXML
     void handleExit(ActionEvent event) {
-          t++;
-       int[] msg = new int[3];
-                msg[0] = 2;
-                msg[1] = 5;
-                msg[2] = 7;
-                ImageView img = new ImageView();
-                
-                
-       if(con.connectToServer(msg)) {
-        System.out.println("-------PAUSE FOR SERVER-- "+ t + " -----");
-        if(con.serverRead()) {
-            byte[] response = con.getRes();
-            System.out.println(Arrays.toString(response) + "       <------------");
-
-            if(t == 1) {
-                btn58.setGraphic(new ImageView(white));
-                btn67.setGraphic(new ImageView(black));
-            }else if(t == 2) {
-                btn58.setGraphic(new ImageView(black));
-                btn67.setGraphic(new ImageView(white));
-                t = 0;
-            }
-        }
-       }
-      //  
+      
     }
     public void onPlayerMove(ActionEvent e){
-        System.out.println("hi denis!");
+        String[] xy = board.getIndexOfStone((Button)e.getSource()).split(",");
+        int[] msg = new int[3];
+                msg[0] = 2;
+                msg[1] = Integer.parseInt(xy[0]);
+                msg[2] = Integer.parseInt(xy[1]);
+                ImageView img = new ImageView();
+                
+       board.getStoneAt(Integer.parseInt(xy[0]), Integer.parseInt(xy[1])).setGraphic(new ImageView(white));       
+       if(con.connectToServer(msg)) {
+        if(con.serverRead()) {
+            byte[] response = con.getRes();
+            board.getStoneAt(response[1], response[2]).setGraphic(new ImageView(black));           
+        }
+       }       
         
     }
     
     private int t = 0;
     private Connection con;
+    private ThreeStonesBoard board;
     Image black;
     Image white;
     
@@ -199,10 +189,12 @@ public class GameBoardController {
         super();
         black = new Image("images/black.png");
         white = new Image("images/white.png");
+        board = new ThreeStonesBoard();
     }
 
     @FXML // This method is called by the FXMLLoader when initialization is complete
     void initialize() { 
+        setButtonsOnBoard();
     }
     public void setConnectionObject(Connection con) {
             this.con = con;
@@ -254,6 +246,54 @@ public class GameBoardController {
             return false;
         }
         return false;
-        }
+    }
+    private void setButtonsOnBoard() {
+        //row 1, has 3 tiles.
+        board.setStoneAt(btn42, 2, 4);
+        board.setStoneAt(btn52, 2, 5);
+        board.setStoneAt(btn62, 2, 6);
+        //row 2, has 5 tiles.
+        board.setStoneAt(btn33, 3, 3);
+        board.setStoneAt(btn43, 3, 4);
+        board.setStoneAt(btn53, 3, 5);
+        board.setStoneAt(btn63, 3, 6);
+        board.setStoneAt(btn73, 3, 7);
+        //row 3, has 7 tiles
+        board.setStoneAt(btn24, 4, 2);
+        board.setStoneAt(btn34, 4, 3);
+        board.setStoneAt(btn44, 4, 4);
+        board.setStoneAt(btn54, 4, 5);
+        board.setStoneAt(btn64, 4, 6);
+        board.setStoneAt(btn74, 4, 7);
+        board.setStoneAt(btn84, 4, 8);
+        //row 4, has 7 tiles
+        board.setStoneAt(btn25, 5, 2);
+        board.setStoneAt(btn35, 5, 3);
+        board.setStoneAt(btn45, 5, 4);
+        // center at 5,5
+        board.setStoneAt(btn65, 5, 6);
+        board.setStoneAt(btn75, 5, 7);
+        board.setStoneAt(btn85, 5, 8);
+        //row 5, has 7 tiles
+        board.setStoneAt(btn26, 6, 2);
+        board.setStoneAt(btn36, 6, 3);
+        board.setStoneAt(btn46, 6, 4);
+        board.setStoneAt(btn56, 6, 5);
+        board.setStoneAt(btn66, 6, 6);
+        board.setStoneAt(btn76, 6, 7);
+        board.setStoneAt(btn86, 6, 8);
+        //row 6, has 5 tiles.
+        board.setStoneAt(btn37, 7, 3);
+        board.setStoneAt(btn47, 7, 4);
+        board.setStoneAt(btn57, 7, 5);
+        board.setStoneAt(btn67, 7, 6);
+        board.setStoneAt(btn77, 7, 7);
+        //row 7, has 3 tiles.
+        board.setStoneAt(btn48, 8, 4);
+        board.setStoneAt(btn58, 8, 5);
+        board.setStoneAt(btn68, 8, 6);
+        
+        
+    }
     
 }
