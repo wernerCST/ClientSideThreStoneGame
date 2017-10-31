@@ -181,13 +181,19 @@ public class GameBoardController {
      * @param e 
      */
     public void onPlayerMove(ActionEvent e){
+        System.out.println("player played----");
         String[] xy = board.getIndexOfStone((Button)e.getSource()).split(",");
         if(counter == 0) {
-            previousX =  Integer.parseInt(xy[0]);
-            previousY = Integer.parseInt(xy[1]);
+            playedX = Integer.parseInt(xy[0]);
+            playedY =  Integer.parseInt(xy[1]);            
         } else {
-            //is the next x == to old x or old y == to new y
-            //validateMove();
+            System.out.println("playedX: " + playedX + " playedY: " + playedY + " previousX: " +
+                    previousX + " previousY: " + previousY + " leftX: " + leftX + " leftY: " + leftY);
+            determineSlotsLeftXY(xy);
+            if(!validateMove()) {
+                errorAlert("Invalid move plases try again.");
+                return;
+            }
         }
         
         int[] msg = new int[3];
@@ -225,11 +231,14 @@ public class GameBoardController {
                 }
                 
             }
-        }
-       }   
-       previousX = playedX;
-       previousY = playedY;
-        counter++;       
+            previousX = response[1]; 
+            previousY = response[2];
+        }//end of server read
+       }//end of message sending to server.   
+       
+       leftX = 0;
+       leftY = 0;
+       counter++;       
     }
     private void showIpWindo() {
         try {
@@ -400,6 +409,23 @@ public class GameBoardController {
         dialog.setContentText(msg);
         dialog.show();
     } 
+
+    private void determineSlotsLeftXY(String[] xy) {
+            boolean validClick = false;
+        
+            for (int i = 0; i < 11; i++) {
+                if (!board.getStoneAt(Integer.parseInt(xy[1]), i).isDisable()) {
+                    leftY++;
+                    validClick = true;
+                } else if(!board.getStoneAt(i, Integer.parseInt(xy[0])).isDisable()){                    
+                    leftX++;
+                    validClick = true;
+                }
+            }
+            
+            if(validClick)
+                errorAlert("Invalid move plases try again.");
+    }
     
     
 }

@@ -1,16 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.mycompany.controllers;
 
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 
 /**
- *
- * @author 1511430
+ * A ThreeStonesBoard class defines a two dimensional Button array
+ * of the board being displayed on the view.
+ * 
+ * @author Hannah Ly
+ * @author Peter Bellefleur MacCaul
+ * @author Werner Castanaza
  */
 public class ThreeStonesBoard {
     //represent board with 2-dimensional array
@@ -40,7 +40,8 @@ public class ThreeStonesBoard {
     }
     
     /**
-     * Retrieves the value of a Stone on the board at the given coordinates.
+     * Retrieves the value of a Stone on the board at the given coordinates,
+     * it returns a x and y index in string format coma separated.
      * 
      * @param x The x-coordinate of the Stone to find.
      * @param y The y-coordinate of the Stone to find.
@@ -49,6 +50,11 @@ public class ThreeStonesBoard {
     public Button getStoneAt(int x, int y) {
         return board[x][y];
     }
+    /**
+     * 
+     * @param item
+     * @return 
+     */
     public String getIndexOfStone(Button item) {
         String res = "";
         for (int i = 0; i < board.length; i++) {
