@@ -2,7 +2,6 @@
 package com.mycompany.controllers;
 
 import javafx.scene.control.Button;
-import javafx.scene.image.ImageView;
 
 /**
  * A ThreeStonesBoard class defines a two dimensional Button array
@@ -50,6 +49,7 @@ public class ThreeStonesBoard {
     public Button getStoneAt(int x, int y) {
         return board[x][y];
     }
+    
     /**
      * Returns the x and y index of a given button in a 
      * coma separated string.

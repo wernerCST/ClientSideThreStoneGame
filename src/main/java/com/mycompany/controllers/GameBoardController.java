@@ -4,11 +4,7 @@ import com.mycompany.clientside.connection.Connection;
 import com.mycompany.stones.MainApp;
 import java.io.IOException;
 import java.net.URL;
-import java.util.Arrays;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,12 +16,16 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Border;
-import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 public class GameBoardController {
-
+    
+    private int previousX, previousY, playedX, playedY, leftX, leftY, counter;
+    private Connection con;
+    private final ThreeStonesBoard board;
+    Image black;
+    Image white;
+    
     @FXML // ResourceBundle that was given to the FXMLLoader
     private ResourceBundle resources;
 
@@ -154,6 +154,26 @@ public class GameBoardController {
 
     @FXML // fx:id="exitBtn"
     private Button exitBtn; // Value injected by FXMLLoader
+    
+    public GameBoardController() {
+        super();
+        black = new Image("images/black.png");
+        white = new Image("images/white.png");
+        board = new ThreeStonesBoard();
+        previousX = 0;
+        previousY = 0;
+        playedX = 0;
+        playedY = 0; 
+        leftX = 0; 
+        leftY = 0; 
+        counter = 0;
+    }
+
+    @FXML // This method is called by the FXMLLoader when initialization is complete
+    void initialize() { 
+        setButtonsOnBoard();
+    }
+    
     /**
      * when the exit button is clicked the socket is closed and the window
      * is closed as well and the IPInputFXMLController is launched.
@@ -168,12 +188,12 @@ public class GameBoardController {
             Stage close = (Stage) exitBtn.getScene().getWindow();
             close.close();
             con.closeSocket();      
-            showIpWindo();
+            showIpWindow();
         } catch (IOException ex) {
             errorAlert(ex.getMessage());
         }
     }
-    private int previousX, previousY, playedX, playedY, leftX, leftY, counter;
+
     /**
      * Handles the sending of the selected index (x,y) the user
      * has clicked on, disables the button in the process. Gets
@@ -243,7 +263,7 @@ public class GameBoardController {
        leftY = 0;
        counter++;       
     }
-    private void showIpWindo() {
+    private void showIpWindow() {
         try {
             Stage primaryStage = new Stage();
             FXMLLoader loader = new FXMLLoader();
@@ -256,6 +276,7 @@ public class GameBoardController {
             errorAlert(ex.getMessage());
         }
     }
+    
     /**
      * Launches the GameOverFXML and will set the scores as well as the string
      * message with the result of who won the game.
@@ -284,33 +305,7 @@ public class GameBoardController {
             errorAlert(ex.getMessage());
         }
     }
-    
-   
-    private Connection con;
-    private final ThreeStonesBoard board;
-    Image black;
-    Image white;
-    
-    
-  //  Image white = new Image("white.png");
-    public GameBoardController() {
-        super();
-        black = new Image("images/black.png");
-        white = new Image("images/white.png");
-        board = new ThreeStonesBoard();
-        previousX = 0;
-        previousY = 0;
-        playedX = 0;
-        playedY = 0; 
-        leftX = 0; 
-        leftY = 0; 
-        counter = 0;
-    }
 
-    @FXML // This method is called by the FXMLLoader when initialization is complete
-    void initialize() { 
-        setButtonsOnBoard();
-    }
     /**
      * Sets the local Connection bean to the same reference as set in 
      * previous views.
@@ -337,6 +332,7 @@ public class GameBoardController {
         }
         return true;
     }
+    
     /**
      * Determines if the button clicked by the user (x,y) is a
      * valid one, that meets the standards of the rules of the game.
@@ -354,6 +350,7 @@ public class GameBoardController {
             }
         }
     }
+    
     /**
      * Helper method that sets the two dimantional Button array
      * in the ThreeStonesBoard bean to the there corresponding buttons

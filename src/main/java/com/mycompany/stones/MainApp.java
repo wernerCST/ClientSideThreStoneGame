@@ -22,7 +22,6 @@ import javafx.stage.Stage;
 public class MainApp extends Application {
 
     private Stage stage;
-    //private final Connection con;
     private Stage primaryStage;
     private Parent rootPane;
     

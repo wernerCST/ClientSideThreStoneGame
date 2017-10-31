@@ -1,7 +1,3 @@
-/**
- * Sample Skeleton for 'MenuFXML.fxml' Controller Class
- */
-
 package com.mycompany.controllers;
 
 import com.mycompany.clientside.connection.Connection;
@@ -11,7 +7,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -39,12 +34,14 @@ public class MenuFXMLController {
     private Button exitBtn;
 
     private Connection con;
+    
     public MenuFXMLController(){
         super();
     }
     
     @FXML
     void initialize() {  }
+    
     /**
      * when the exit button is clicked the socket is closed and the window
      * is closed as well and the IPInputFXMLController is launched.
@@ -59,15 +56,16 @@ public class MenuFXMLController {
             Stage close = (Stage) exitBtn.getScene().getWindow();
             close.close();
             con.closeSocket(); 
-            showIpWindo();
+            showIpWindow();
         } catch (IOException ex) {
             errorAlert(ex.getMessage());
         }
     }
+    
     /**
      * Helper method that handles the call to launch the IPInputFXML.
      */
-     private void showIpWindo() {
+     private void showIpWindow() {
         try {
             Stage primaryStage = new Stage();
             FXMLLoader loader = new FXMLLoader();
@@ -80,6 +78,7 @@ public class MenuFXMLController {
             Logger.getLogger(GameBoardController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+     
      /**
       * Even handler for when the user decides to play the game.
       * @param event 
@@ -114,6 +113,7 @@ public class MenuFXMLController {
             errorAlert("Sorry please try again");
         }
     }
+    
     /**
      * Helper method to display a dialog box with a given message
      * being passed in.
@@ -126,6 +126,7 @@ public class MenuFXMLController {
         dialog.setContentText(msg);
         dialog.show();
     } 
+    
     /**
      * setter to get the reference of the Connection bean.
      * @param con 

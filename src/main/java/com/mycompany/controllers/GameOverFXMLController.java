@@ -1,7 +1,3 @@
-/**
- * Sample Skeleton for 'GameOverFXML.fxml' Controller Class
- */
-
 package com.mycompany.controllers;
 
 import com.mycompany.clientside.connection.Connection;
@@ -9,9 +5,6 @@ import com.mycompany.stones.MainApp;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -35,7 +28,6 @@ public class GameOverFXMLController {
     @FXML
     private Label winLoseMsgLable;
 
-
     @FXML // fx:id="playAgainButton"
     private Button playAgainBtn; // Value injected by FXMLLoader
 
@@ -47,9 +39,11 @@ public class GameOverFXMLController {
 
     @FXML // fx:id="scoreComputerLabel"
     private Label scoreComputerLabel; // Value injected by FXMLLoader
+    
     private Connection con;
     private String msg;
     private int playerScore, aiScore;
+    
     public GameOverFXMLController(){
         super();
         msg = "";
@@ -61,6 +55,7 @@ public class GameOverFXMLController {
     void initialize() {        
         
     }
+    
     /**
      * When the exit button is clicked this handler will send a message 
      * to the server that the user has left. It also closes the socket
@@ -76,15 +71,16 @@ public class GameOverFXMLController {
             Stage close = (Stage) exitBtn.getScene().getWindow();
             close.close();
             con.closeSocket(); 
-            showIpWindo();
+            showIpWindow();
         } catch (IOException ex) {
             errorAlert(ex.getMessage());
         }
     }
+    
     /**
      * Helper method that handles the call to open the IPInputFXML view.
      */
-     private void showIpWindo() {
+     private void showIpWindow() {
         try {
             Stage primaryStage = new Stage();
             FXMLLoader loader = new FXMLLoader();
@@ -97,7 +93,6 @@ public class GameOverFXMLController {
             errorAlert(ex.getMessage());
         }
     }
-
    
      /**
       * Launches the GameBoardFXML view and restarts the game from scratch,
@@ -135,6 +130,7 @@ public class GameOverFXMLController {
                 errorAlert(ex.getMessage());
             }
     }
+    
     /**
      * Setter to obtain the reference of the Connection bean.
      * @param con 
@@ -148,6 +144,7 @@ public class GameOverFXMLController {
         scoreComputerLabel.setText(" " + this.aiScore);
         winLoseMsgLable.setText(msg);
     }
+    
     /**
      * Helper method to display a dialog box with a given message
      * being passed in.

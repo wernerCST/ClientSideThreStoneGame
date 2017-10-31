@@ -1,20 +1,10 @@
-/**
- * Sample Skeleton for 'IPInputFXML.fxml' Controller Class
- */
-
 package com.mycompany.controllers;
 
 import com.mycompany.clientside.connection.Connection;
 import com.mycompany.stones.MainApp;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.net.Socket;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import java.util.regex.Pattern;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -46,10 +36,12 @@ public class IPInputFXMLController {
     private TextField IPTextField; // Value injected by FXMLLoader
     
     private Connection con;
+    
     public IPInputFXMLController(){
         super();
         con = new Connection();
     }
+    
     @FXML // This method is called by the FXMLLoader when initialization is complete
     void initialize() { }
     /**
@@ -57,6 +49,7 @@ public class IPInputFXMLController {
      * response with (0) indicating that a new session has been created.
      * @param event 
      */
+    
     @FXML
     void handleInput(ActionEvent event)  {
         //check if IP is valid or not
@@ -101,6 +94,7 @@ public class IPInputFXMLController {
             errorAlert("Sorry please try again");
         }
     }
+    
     /**
      * Helper method to display a dialog box with a given message
      * being passed in.
