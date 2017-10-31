@@ -31,7 +31,7 @@ public class Connection {
      */
     public Connection() {
         port = 7;
-        BUFSIZE = 32;  
+        BUFSIZE = 6;  
         res = new byte[BUFSIZE];
     }
     /**
@@ -41,14 +41,14 @@ public class Connection {
     public boolean connectToServer(int[] userMsg) {
         System.out.println("1.2");
         int msgSize;
-        byte[] res = new byte[32];
+        byte[] res = new byte[BUFSIZE];
         res[0] = 0;
         byte[] serverMsg = new byte[BUFSIZE];
         try {
             System.out.println("1.3");            
             OutputStream out = sk.getOutputStream();
             System.out.println("1.4");
-            byte[] msg = new byte[32];
+            byte[] msg = new byte[BUFSIZE];
             for (int i = 0; i < userMsg.length; i++) {
                 msg[i] = (byte)userMsg[i];
                 System.out.println(i + ": " +  msg[i]);
@@ -66,7 +66,7 @@ public class Connection {
     public boolean serverRead() {
         System.out.println("1.2");
         int msgSize;
-        this.res = new byte[32];
+        this.res = new byte[BUFSIZE];
         res[0] = 0;
         byte[] serverMsg = new byte[BUFSIZE];
         try {
