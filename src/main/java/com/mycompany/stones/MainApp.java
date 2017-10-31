@@ -28,13 +28,12 @@ import javafx.stage.Stage;
 public class MainApp extends Application {
 
     private Stage stage;
-    private final Connection con;
+    //private final Connection con;
     private Stage primaryStage;
     private Parent rootPane;
     
     public MainApp() {
-        super();
-        con = new Connection();
+        super();        
     }
     
     @Override
@@ -51,8 +50,6 @@ public class MainApp extends Application {
             rootPane = (AnchorPane) loader.load();
             Scene scene = new Scene(rootPane);
             primaryStage.setScene(scene);
-            IPInputFXMLController controller = loader.getController();
-            controller.setConnectionObject(con);
         } catch (IOException ex) {
             errorAlert(ex.getMessage());
         }

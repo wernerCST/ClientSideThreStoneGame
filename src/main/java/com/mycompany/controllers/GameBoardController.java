@@ -12,6 +12,7 @@ import java.util.Arrays;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -22,6 +23,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 public class GameBoardController {
@@ -157,8 +159,15 @@ public class GameBoardController {
 
     @FXML
     void handleExit(ActionEvent event) {
-      
+        int[] msg = new int[1];
+        msg[0] = 4;
+        con.connectToServer(msg);
+        Stage close = (Stage) exitBtn.getScene().getWindow();
+        close.close();
+        con = null;
+        showIpWindo();      
     }
+    private int previousX, previousY, playedX, playedY, leftX, leftY;
     public void onPlayerMove(ActionEvent e){
         String[] xy = board.getIndexOfStone((Button)e.getSource()).split(",");
         int[] msg = new int[3];
@@ -167,14 +176,59 @@ public class GameBoardController {
                 msg[2] = Integer.parseInt(xy[1]);
                 ImageView img = new ImageView();
                 
-       board.getStoneAt(Integer.parseInt(xy[0]), Integer.parseInt(xy[1])).setGraphic(new ImageView(white));       
+        Button temp = board.getStoneAt(Integer.parseInt(xy[0]), Integer.parseInt(xy[1]));   
+        temp.setGraphic(new ImageView(white));
+        temp.setDisable(true);
+       
        if(con.connectToServer(msg)) {
         if(con.serverRead()) {
             byte[] response = con.getRes();
-            board.getStoneAt(response[1], response[2]).setGraphic(new ImageView(black));           
+            board.getStoneAt(response[1], response[2]).setGraphic(new ImageView(black)); 
+            board.getStoneAt(response[1], response[2]).setDisable(true);
+            System.out.println("\t--->>" + Arrays.toString(response));
+            
+            pScoreLbl.setText("" + response[3]);
+            cScoreLbl.setText("" + response[4]);            
+            pLeftLbl.setText("" + response[5]);
+            cLeftLbl.setText("" + response[5]);
+            
+            
+            if(response[0] == 4){
+                lunchGameOverPage(e, board.getStoneAt(response[1], response[2]));
+            }
         }
-       }       
-        
+       }          
+    }
+    private void showIpWindo() {
+        try {
+            Stage primaryStage = new Stage();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("/fxml/IPInputFXML.fxml"));
+            Parent rootPane = (AnchorPane) loader.load();
+            Scene scene = new Scene(rootPane);
+            primaryStage.setScene(scene);            
+            primaryStage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(GameBoardController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    private void lunchGameOverPage(ActionEvent e, Button btn) {
+        try {
+            Stage primaryStage = new Stage();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("/fxml/GameOverFXML.fxml"));
+            Parent rootPane = (AnchorPane) loader.load();
+            Scene scene = new Scene(rootPane);
+            primaryStage.setScene(scene);
+            GameOverFXMLController gameover = loader.getController();
+            gameover.setConnectionObject(con);
+            
+            primaryStage.show();
+            Stage close = (Stage) btn.getScene().getWindow();
+            close.close();
+        } catch (IOException ex) {
+            Logger.getLogger(GameBoardController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     private int t = 0;
@@ -235,17 +289,20 @@ public class GameBoardController {
         cLeftLbl.setText(Integer.toString(pebbles));
     }
     
-    boolean validateMove(){
-        int x = 1 , y = 2;
-        int xo = 1, yo = 2;
-        
-        if(x == xo){
-            if(y == yo){
+    
+    boolean validateMove(){            
+        if(!(leftX == 0 && leftY == 0)){
+            if(previousX == playedX){
                 return true;
             }
-            return false;
+            if(previousY == playedY){
+                return true;
+            }
+            else{
+                return false;
+            }
         }
-        return false;
+        return true;
     }
     private void setButtonsOnBoard() {
         //row 1, has 3 tiles.
@@ -291,9 +348,9 @@ public class GameBoardController {
         //row 7, has 3 tiles.
         board.setStoneAt(btn48, 8, 4);
         board.setStoneAt(btn58, 8, 5);
-        board.setStoneAt(btn68, 8, 6);
+        board.setStoneAt(btn68, 8, 6);       
         
-        
-    }
+    }   
+    
     
 }

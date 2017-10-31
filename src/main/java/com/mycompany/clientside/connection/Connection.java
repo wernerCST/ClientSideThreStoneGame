@@ -30,7 +30,7 @@ public class Connection {
      * Sets the port number to its default as well as the BUFSIZE.
      */
     public Connection() {
-        port = 7;
+        port = 50000;
         BUFSIZE = 6;  
         res = new byte[BUFSIZE];
     }

@@ -48,6 +48,7 @@ public class IPInputFXMLController {
     private Connection con;
     public IPInputFXMLController(){
         super();
+        con = new Connection();
     }
     @FXML // This method is called by the FXMLLoader when initialization is complete
     void initialize() {
@@ -80,7 +81,7 @@ public class IPInputFXMLController {
         con.serverRead();
         byte[] response = con.getRes();
         
-        if(response[0] == 1){                
+        if(response[0] == 0){                
             try {
                 Stage primaryStage = new Stage();
                 FXMLLoader loader = new FXMLLoader();               
@@ -110,9 +111,4 @@ public class IPInputFXMLController {
         dialog.setContentText(msg);
         dialog.show();
     }  
-
-
-    public void setConnectionObject(Connection con) {
-        this.con = con;
-    }
 }
